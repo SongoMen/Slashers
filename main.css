@@ -1,0 +1,89 @@
+.pelement {
+    transition: all 260ms ease-out !important;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -webkit-transform-style: flat;
+    -moz-transform-style: flat;
+    -ms-transform-style: flat;
+    -o-transform-style: flat;
+    will-change: transform;
+}
+    .mcontrol {
+        position: absolute;
+        right: 15px;
+        right: .6383vw;
+        bottom: -35px;
+        bottom: -1.40426vw;
+        z-index: 50
+    }
+
+    .mcontrol>div {
+        width: 40px;
+        width: 1.70213vw;
+        height: 40px;
+        height: 1.70213vw;
+        float: right;
+        position: relative
+    }
+
+    .mcontrol>div:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 40px;
+        width: 1.70213vw;
+        height: 40px;
+        height: 1.70213vw;
+        border-color: #fa343d;
+        background: #fa343d;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        -moz-transform: scale(0, 0);
+        -ms-transform: scale(0, 0);
+        -webkit-transform: scale(0, 0);
+        transform: scale(0, 0);
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+        opacity: 0;
+        transition: transform 260ms, opacity 160ms
+    }
+
+    .mcontrol>div:hover:before {
+        filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+        opacity: 1;
+        -moz-transform: scale(1, 1);
+        -ms-transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        transform: scale(1, 1)
+    }
+
+    .mcontrol>div:hover svg path {
+        fill: black
+    }
+
+    .mcontrol>div svg {
+        width: 8px;
+        width: .34043vw;
+        height: 14px;
+        height: .59574vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -7px 0 0 -5px;
+        margin: -.29787vw 0 0 -.21277vw
+    }
+
+    .mcontrol>div.next {
+        margin-left: 10px;
+        margin-left: .42553vw
+    }
+
+    .mcontrol>div.next svg {
+        margin: -7px 0 0 -3px;
+        margin: -.29787vw 0 0 -.12766vw
+    }
+
