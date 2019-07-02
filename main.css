@@ -1,3 +1,21 @@
+body{
+    background-color: #febe68;
+    color: #f4f4f4 !important;
+    font-family: "Open Sans";
+    cursor: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+.landingPage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+}
+
 .pelement {
     transition: all 260ms ease-out !important;
     -webkit-backface-visibility: hidden;
@@ -10,16 +28,9 @@
     -o-transform-style: flat;
     will-change: transform;
 }
-    .mcontrol {
-        position: absolute;
-        right: 15px;
-        right: .6383vw;
-        bottom: -35px;
-        bottom: -1.40426vw;
-        z-index: 50
-    }
 
-    .mcontrol>div {
+
+    .control>div {
         width: 40px;
         width: 1.70213vw;
         height: 40px;
@@ -28,7 +39,7 @@
         position: relative
     }
 
-    .mcontrol>div:before {
+    .control>div:before {
         content: '';
         display: block;
         position: absolute;
@@ -38,8 +49,8 @@
         width: 1.70213vw;
         height: 40px;
         height: 1.70213vw;
-        border-color: #fa343d;
-        background: #fa343d;
+        border-color: #f4f4f4;
+        background: #f4f4f4;
         -moz-border-radius: 50%;
         -webkit-border-radius: 50%;
         border-radius: 50%;
@@ -52,7 +63,7 @@
         transition: transform 260ms, opacity 160ms
     }
 
-    .mcontrol>div:hover:before {
+    .control>div:hover:before {
         filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
         opacity: 1;
         -moz-transform: scale(1, 1);
@@ -61,11 +72,11 @@
         transform: scale(1, 1)
     }
 
-    .mcontrol>div:hover svg path {
+    .control>div:hover svg path {
         fill: black
     }
 
-    .mcontrol>div svg {
+    .control>div svg {
         width: 8px;
         width: .34043vw;
         height: 14px;
@@ -77,13 +88,203 @@
         margin: -.29787vw 0 0 -.21277vw
     }
 
-    .mcontrol>div.next {
+    .control>div.next {
         margin-left: 10px;
         margin-left: .42553vw
     }
 
-    .mcontrol>div.next svg {
+    .control>div.next svg {
         margin: -7px 0 0 -3px;
         margin: -.29787vw 0 0 -.12766vw
     }
 
+
+
+/*cursor*/
+
+.box {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	top: 50%;
+	left: 50%;
+	margin: -4px 0 0 -4px;
+	background: #f4f4f4;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-backface-visibility: hidden;
+	opacity: 0;
+	cursor: none;
+	z-index: 1000;
+	pointer-events: none;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	will-change: transform
+}
+
+.box.hover {
+	height: 30px;
+	width: 30px;
+	margin: -15px 0 0 -15px;
+	background: transparent;
+	border: 2px solid #f4f4f4
+}
+
+.cursor .pointer {
+	position: absolute;
+	width: 70px;
+	height: 70px;
+	top: 50%;
+	left: 50%;
+	margin: -35px 0 0 -35px;
+	background: #1f2126;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-backface-visibility: hidden;
+	-moz-transform: scale(0, 0);
+	-ms-transform: scale(0, 0);
+	-webkit-transform: scale(0, 0);
+	transform: scale(0, 0);
+	cursor: none;
+	z-index: 1000;
+	pointer-events: none;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	will-change: transform;
+	overflow: hidden
+}
+
+.cursor .loading {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	top: 50%;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+	background: transparent;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-backface-visibility: hidden;
+	cursor: none;
+	z-index: 1000;
+	pointer-events: none;
+	will-change: transform;
+	overflow: hidden;
+	-moz-transform: scale(0, 0);
+	-ms-transform: scale(0, 0);
+	-webkit-transform: scale(0, 0);
+	transform: scale(0, 0)
+}
+
+.cursor .loading #preload {
+	animation: rotate 1s linear infinite;
+	width: 100%;
+	height: 100%
+}
+
+.cursor .loading #preload circle {
+	stroke: #000;
+	stroke-width: 2;
+	fill: transparent;
+	transform-origin: center;
+	animation: svg-preloader 2s ease-in-out forwards infinite
+}
+
+@keyframes svg-preloader {
+	0% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 121;
+		transform: rotate(0deg) rotateY(0deg)
+	}
+	50% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 211;
+		transform: rotate(0deg) rotateY(0deg)
+	}
+	50.01% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 211;
+		transform: rotate(-85deg) rotateY(180deg)
+	}
+	100% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 121;
+		transform: rotate(-85deg) rotateY(180deg)
+	}
+}
+
+@keyframes rotate {
+	to {
+		transform: rotate(-360deg)
+	}
+}
+
+.drag {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 50%;
+	left: 50%;
+	margin: -15px 0 0 -15px;
+	background: transparent;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-backface-visibility: hidden;
+	-moz-transform: scale(0, 0);
+	-ms-transform: scale(0, 0);
+	-webkit-transform: scale(0, 0);
+	transform: scale(0, 0);
+	cursor: none;
+	z-index: 1000;
+	pointer-events: none;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	will-change: transform
+}
+
+.drag .next {
+	position: absolute;
+	top: 50%;
+	right: -18px;
+	height: 30px;
+	margin-top: -12px;
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	opacity: 0
+}
+
+.drag .next svg path {
+	fill: #f4f4f4
+}
+
+.drag .prev {
+	position: absolute;
+	top: 50%;
+	left: -18px;
+	height: 30px;
+	margin-top: -12px
+}
+
+.drag .prev svg path {
+	fill: #f4f4f4
+}
+
+.drag .open {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -15px 0 0 -15px;
+	-moz-transform: scale(0, 0);
+	-ms-transform: scale(0, 0);
+	-webkit-transform: scale(0, 0);
+	transform: scale(0, 0);
+	border: 2px solid #fff;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	border-radius: 50%
+}
