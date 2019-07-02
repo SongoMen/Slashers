@@ -140,6 +140,7 @@ function showPoint(e) {
         } else {
             var fixtarget = $(e.target);
         }
+        console.log("DSA")
     }
 
     if ($(e.target).hasClass('fixpoint') || $(e.target).closest('.fixpoint').length) {
@@ -346,9 +347,11 @@ $.fn.parallax = function (resistance, mouse) {
 };
 function activateParallax() {
     $(document).mousemove(function (e) {
-        $(".jd").parallax(50, e);
+        $(".landingPage__title").parallax(30, e);
     });
 }
-animateText('.jd', false);
+animateText('.landingPage__title h1', false);
+animateText('.landingPage__title h3', false);
+
 activateParallax()
 
