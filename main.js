@@ -350,11 +350,31 @@ function activateParallax() {
         $(".landingPage__title").parallax(30, e);
     });
 }
+
+function nextSlide(active,next){
+    $(active).css('position','absolute')
+    $(active).css('left','-3000px')
+    setTimeout(() => {
+        $(active).css('display','none')
+    }, 1000);
+}
+
+$('.control .next').on( 'click', function() {
+    nextSlide('.landingPage')
+})
+
+
+
 animateText('.landingPage__title h1', false);
 setTimeout(() => {
     $(".landingPage__title h3").css("display","block")
     animateText('.landingPage__title h3', false);
 }, 800);
+setTimeout(() => {
+    $(".landingPage__title .btnmore").css("display","inline-block")
+
+},1500)
+
 
 activateParallax()
 

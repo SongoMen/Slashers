@@ -16,20 +16,25 @@ body {
 	background: #F7ECE1;
 }
 
+@keyframes slowShow{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1
+	}
+}
+
 h1{
-	font-size: calc(20px + (36 - 20) * ((100vw - 300px) / (1600 - 300)));
+	font-size: calc(25px + (46 - 25) * ((100vw - 300px) / (1600 - 300)));
 }
 
 h3{
-	font-size: calc(15px + (27 - 20) * ((100vw - 300px) / (1600 - 300)));
+	font-size: calc(20px + (33 - 20) * ((100vw - 300px) / (1600 - 300)));
 }
 
-.socials{
-	position: absolute;
-	left: 10px;
-	bottom: 0;
-	width: 100px;
-	z-index: 20;
+a {
+	text-decoration: none
 }
 
 ul{
@@ -46,6 +51,14 @@ ul li{
 ul svg{
 	stroke: white;
 	fill: #8D86C9;
+}
+
+.socials{
+	position: absolute;
+	left: 10px;
+	bottom: 20PX;
+	width: 100px;
+	z-index: 20;
 }
 
 .socials li.tw svg {
@@ -240,6 +253,7 @@ ul svg{
 	width: 70%;
 	position: absolute;
 	right: -200px;
+	animation: slowShow 2s
 }
 
 #ku.svgmate #Bluearmbot,
@@ -373,17 +387,214 @@ ul svg{
 	transform-origin: 785.132px 295.833px
 }
 
+/*HAMBURGER*/
+
+.header{
+	display: flex;
+	padding: 50px;
+	justify-content: flex-end;
+	height: 10%;
+}
+
+.toggle {
+	left: 50px;
+	top: 50px;
+	cursor: pointer;
+	display: flex;
+  }
+  .toggle input {
+	display: none;
+  }
+  .toggle input + div {
+	width: 20px;
+	height: 14px;
+	position: relative;
+  }
+  .toggle input + div div {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	transition: -webkit-transform .5s ease;
+	transition: transform .5s ease;
+	transition: transform .5s ease, -webkit-transform .5s ease;
+  }
+  .toggle input + div div span {
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+  }
+  .toggle input + div div span:first-child {
+	top: 0;
+  }
+  .toggle input + div div span:first-child:before, .toggle input + div div span:first-child:after {
+	top: 0;
+  }
+  .toggle input + div div span:last-child {
+	bottom: 0;
+  }
+  .toggle input + div div span:last-child:before, .toggle input + div div span:last-child:after {
+	bottom: 0;
+  }
+  .toggle input + div div span:before, .toggle input + div div span:after {
+	content: '';
+	display: block;
+	width: 47%;
+	height: 2px;
+	border-radius: 1px;
+	background: #8D86C9;
+	position: absolute;
+	-webkit-backface-visibility: hidden;
+	transition: border-radius .3s ease, -webkit-transform .5s ease;
+	transition: transform .5s ease, border-radius .3s ease;
+	transition: transform .5s ease, border-radius .3s ease, -webkit-transform .5s ease;
+  }
+  .toggle input + div div span:before {
+	left: 0;
+	-webkit-transform-origin: 0 50%;
+			transform-origin: 0 50%;
+	-webkit-transform: translate(1px, 0) scaleX(1.1);
+			transform: translate(1px, 0) scaleX(1.1);
+  }
+  .toggle input + div div span:after {
+	right: 0;
+	-webkit-transform-origin: 100% 50%;
+			transform-origin: 100% 50%;
+	-webkit-transform: translate(-1px, 0) scaleX(1.1);
+			transform: translate(-1px, 0) scaleX(1.1);
+  }
+  .toggle input + div svg {
+	display: block;
+	fill: none;
+	stroke: #8D86C9;
+	stroke-width: 2px;
+	width: 44px;
+	height: 44px;
+	stroke-linecap: round;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -22px 0 0 -22px;
+	stroke-dasharray: 0 82.801 8 82.801;
+	stroke-dashoffset: 82.801;
+	-webkit-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+	-webkit-backface-visibility: hidden;
+	-webkit-transform: scale(1);
+			transform: scale(1);
+	transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, -webkit-transform .5s ease;
+	transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, transform .5s ease;
+	transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, transform .5s ease, -webkit-transform .5s ease;
+  }
+  .toggle input + div svg:nth-child(3) {
+	-webkit-transform: rotate(180deg) scale(1);
+			transform: rotate(180deg) scale(1);
+  }
+  .toggle input:checked + div div {
+	-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+  }
+  .toggle input:checked + div div span:first-child:before {
+	-webkit-transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
+			transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
+  }
+  .toggle input:checked + div div span:first-child:after {
+	-webkit-transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
+			transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
+  }
+  .toggle input:checked + div div span:last-child:before {
+	-webkit-transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
+			transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
+  }
+  .toggle input:checked + div div span:last-child:after {
+	-webkit-transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
+			transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
+  }
+  .toggle input:checked + div svg {
+	stroke-dashoffset: 62;
+	stroke-dasharray: 0 82.801 62 82.801;
+	-webkit-transform: rotate(90deg);
+			transform: rotate(90deg);
+  }
+  .toggle input:checked + div svg:nth-child(3) {
+	-webkit-transform: rotate(270deg);
+			transform: rotate(270deg);
+  }
+  
+
+.btnmore {
+	cursor: none;
+	display: none;
+	transition: all .5s;
+}
+
+.btnmore:before {
+	content: '';
+	display: block;
+	width: 0%;
+	height: 4px;
+	height: .08511vw;
+	background: #725AC1;
+	position: absolute;
+	transition: width .6s;
+	bottom: 15px;
+	bottom: .6383vw;
+	left: 0
+}
+
+.btnmore:hover:before {
+	animation: hoverlink 2s ease-in-out infinite;
+	width: 0%
+}
+
+.btnmore h5{
+	margin: 25px 10px;
+	margin-top: 70px;
+	color: #725AC1;
+}
+
+@keyframes hoverlink {
+	0% {
+		width: 0%;
+		left: 0
+	}
+	20% {
+		width: 100%;
+		left: 0;
+		right: 0
+	}
+	21% {
+		width: 100%;
+		left: auto;
+		right: 0
+	}
+	40% {
+		right: 0;
+		left: auto;
+		width: 0%
+	}
+	100% {
+		width: 0%;
+		left: auto;
+		right: 0
+	}
+}
 
 
 .landingPage {
 	width: 100%;
-	height: 100%;
+	height: 90%;
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: row;
 	align-items: center;
 	padding: 120px;
+	padding-top: 30px;
 	position: relative;
+	transition:all 1s linear;
+	left: 0;
 }
 
 .landingPage__title{
@@ -392,7 +603,8 @@ ul svg{
 	align-items: flex-start
 }
 .landingPage__title h1, .landingPage__title h3{
-	margin: 10px
+	margin: 10px;
+	transition: all .5s;
 }
 
 .landingPage__title h3{
@@ -407,8 +619,8 @@ ul svg{
 
 .bottom{
 	position: absolute;
-	right: 100px;
-	bottom: 50px;
+	right: 50px;
+	bottom: 70px;
 	z-index: 10;
 	display: flex;
 	justify-content: center;
@@ -432,6 +644,7 @@ ul svg{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 }
 
 .control>div {
@@ -682,4 +895,8 @@ ul svg{
 	-moz-border-radius: 50%;
 	-webkit-border-radius: 50%;
 	border-radius: 50%
+}
+
+.about{
+	display: none
 }
