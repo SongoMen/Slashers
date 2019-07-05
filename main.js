@@ -351,7 +351,10 @@ function activateParallax() {
     });
 }
 animateText('.landingPage__title h1', false);
-animateText('.landingPage__title h3', false);
+setTimeout(() => {
+    $(".landingPage__title h3").css("display","block")
+    animateText('.landingPage__title h3', false);
+}, 800);
 
 activateParallax()
 
