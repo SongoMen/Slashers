@@ -9,11 +9,25 @@ body {
 }
 
 * {
-	box-sizing: border-box
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box
+}
+
+::-moz-selection {
+	background: #F7ECE1;
 }
 
 ::selection {
 	background: #F7ECE1;
+}
+
+@-webkit-keyframes slowShow{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1
+	}
 }
 
 @keyframes slowShow{
@@ -75,13 +89,17 @@ ul svg{
     position: relative;
     width: 30px;
     height: 30px;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
     border-radius: 50%;
 	line-height: 30px;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	align-items: center;
-	justify-content: center
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center
 }
 
 .socials svg{
@@ -91,24 +109,73 @@ ul svg{
 
 /*ILLUSTRATION*/
 
-@keyframes ekumanslidein {
+@-webkit-keyframes ekumanslidein {
 	0% {
-		transform: translateX(-600px)
+		-webkit-transform: translateX(-600px);
+		        transform: translateX(-600px)
 	}
 	50% {
-		transform: translateX(-600px) scaleX(1)
+		-webkit-transform: translateX(-600px) scaleX(1);
+		        transform: translateX(-600px) scaleX(1)
 	}
 	75% {
-		transform: translateX(30px) scaleX(.9)
+		-webkit-transform: translateX(30px) scaleX(.9);
+		        transform: translateX(30px) scaleX(.9)
 	}
 	87.5% {
-		transform: translateX(-5px)
+		-webkit-transform: translateX(-5px);
+		        transform: translateX(-5px)
 	}
 	97% {
-		transform: translateX(3px)
+		-webkit-transform: translateX(3px);
+		        transform: translateX(3px)
 	}
 	to {
-		transform: translateX(0) scaleX(1)
+		-webkit-transform: translateX(0) scaleX(1);
+		        transform: translateX(0) scaleX(1)
+	}
+}
+
+@keyframes ekumanslidein {
+	0% {
+		-webkit-transform: translateX(-600px);
+		        transform: translateX(-600px)
+	}
+	50% {
+		-webkit-transform: translateX(-600px) scaleX(1);
+		        transform: translateX(-600px) scaleX(1)
+	}
+	75% {
+		-webkit-transform: translateX(30px) scaleX(.9);
+		        transform: translateX(30px) scaleX(.9)
+	}
+	87.5% {
+		-webkit-transform: translateX(-5px);
+		        transform: translateX(-5px)
+	}
+	97% {
+		-webkit-transform: translateX(3px);
+		        transform: translateX(3px)
+	}
+	to {
+		-webkit-transform: translateX(0) scaleX(1);
+		        transform: translateX(0) scaleX(1)
+	}
+}
+
+@-webkit-keyframes ekumanarmrotate {
+	0%,
+	45%,
+	65%,
+	85%,
+	to {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
+	}
+	55%,
+	75% {
+		-webkit-transform: rotate(-5deg);
+		        transform: rotate(-5deg)
 	}
 }
 
@@ -118,72 +185,185 @@ ul svg{
 	65%,
 	85%,
 	to {
-		transform: rotate(0deg)
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
 	}
 	55%,
 	75% {
-		transform: rotate(-5deg)
+		-webkit-transform: rotate(-5deg);
+		        transform: rotate(-5deg)
+	}
+}
+
+@-webkit-keyframes ekumanhairwobble {
+	50%,
+	to {
+		-webkit-transform: scaleX(1);
+		        transform: scaleX(1)
+	}
+	75% {
+		-webkit-transform: scaleX(1.2);
+		        transform: scaleX(1.2)
+	}
+	87.5% {
+		-webkit-transform: scaleX(.8);
+		        transform: scaleX(.8)
+	}
+	97% {
+		-webkit-transform: scaleX(1.09);
+		        transform: scaleX(1.09)
 	}
 }
 
 @keyframes ekumanhairwobble {
 	50%,
 	to {
-		transform: scaleX(1)
+		-webkit-transform: scaleX(1);
+		        transform: scaleX(1)
 	}
 	75% {
-		transform: scaleX(1.2)
+		-webkit-transform: scaleX(1.2);
+		        transform: scaleX(1.2)
 	}
 	87.5% {
-		transform: scaleX(.8)
+		-webkit-transform: scaleX(.8);
+		        transform: scaleX(.8)
 	}
 	97% {
-		transform: scaleX(1.09)
+		-webkit-transform: scaleX(1.09);
+		        transform: scaleX(1.09)
+	}
+}
+
+@-webkit-keyframes ekuwomanlidein {
+	0% {
+		-webkit-transform: translateX(600px);
+		        transform: translateX(600px)
+	}
+	50% {
+		-webkit-transform: translateX(600px) scaleX(1);
+		        transform: translateX(600px) scaleX(1)
+	}
+	75% {
+		-webkit-transform: translateX(-30px) scaleX(.9);
+		        transform: translateX(-30px) scaleX(.9)
+	}
+	87.5% {
+		-webkit-transform: translateX(5px);
+		        transform: translateX(5px)
+	}
+	97% {
+		-webkit-transform: translateX(-3px);
+		        transform: translateX(-3px)
+	}
+	to {
+		-webkit-transform: translateX(0) scaleX(1);
+		        transform: translateX(0) scaleX(1)
 	}
 }
 
 @keyframes ekuwomanlidein {
 	0% {
-		transform: translateX(600px)
+		-webkit-transform: translateX(600px);
+		        transform: translateX(600px)
 	}
 	50% {
-		transform: translateX(600px) scaleX(1)
+		-webkit-transform: translateX(600px) scaleX(1);
+		        transform: translateX(600px) scaleX(1)
 	}
 	75% {
-		transform: translateX(-30px) scaleX(.9)
+		-webkit-transform: translateX(-30px) scaleX(.9);
+		        transform: translateX(-30px) scaleX(.9)
 	}
 	87.5% {
-		transform: translateX(5px)
+		-webkit-transform: translateX(5px);
+		        transform: translateX(5px)
 	}
 	97% {
-		transform: translateX(-3px)
+		-webkit-transform: translateX(-3px);
+		        transform: translateX(-3px)
 	}
 	to {
-		transform: translateX(0) scaleX(1)
+		-webkit-transform: translateX(0) scaleX(1);
+		        transform: translateX(0) scaleX(1)
+	}
+}
+
+@-webkit-keyframes kulapdropin {
+	0% {
+		-webkit-transform: translateY(-230px) scale(0) rotate(0deg);
+		        transform: translateY(-230px) scale(0) rotate(0deg)
+	}
+	35% {
+		-webkit-transform: translateY(-230px) scale(1.03) rotate(20deg);
+		        transform: translateY(-230px) scale(1.03) rotate(20deg)
+	}
+	45% {
+		-webkit-transform: rotate(10deg);
+		        transform: rotate(10deg)
+	}
+	50% {
+		-webkit-transform: translateY(-5px) scale(.98) rotate(0deg);
+		        transform: translateY(-5px) scale(.98) rotate(0deg)
+	}
+	55% {
+		-webkit-transform: translateY(-10px) scale(1.01) rotate(0deg);
+		        transform: translateY(-10px) scale(1.01) rotate(0deg)
+	}
+	60% {
+		-webkit-transform: translateY(0) scale(1);
+		        transform: translateY(0) scale(1)
+	}
+	to {
+		-webkit-transform: translateY(0);
+		        transform: translateY(0)
 	}
 }
 
 @keyframes kulapdropin {
 	0% {
-		transform: translateY(-230px) scale(0) rotate(0deg)
+		-webkit-transform: translateY(-230px) scale(0) rotate(0deg);
+		        transform: translateY(-230px) scale(0) rotate(0deg)
 	}
 	35% {
-		transform: translateY(-230px) scale(1.03) rotate(20deg)
+		-webkit-transform: translateY(-230px) scale(1.03) rotate(20deg);
+		        transform: translateY(-230px) scale(1.03) rotate(20deg)
 	}
 	45% {
-		transform: rotate(10deg)
+		-webkit-transform: rotate(10deg);
+		        transform: rotate(10deg)
 	}
 	50% {
-		transform: translateY(-5px) scale(.98) rotate(0deg)
+		-webkit-transform: translateY(-5px) scale(.98) rotate(0deg);
+		        transform: translateY(-5px) scale(.98) rotate(0deg)
 	}
 	55% {
-		transform: translateY(-10px) scale(1.01) rotate(0deg)
+		-webkit-transform: translateY(-10px) scale(1.01) rotate(0deg);
+		        transform: translateY(-10px) scale(1.01) rotate(0deg)
 	}
 	60% {
-		transform: translateY(0) scale(1)
+		-webkit-transform: translateY(0) scale(1);
+		        transform: translateY(0) scale(1)
 	}
 	to {
-		transform: translateY(0)
+		-webkit-transform: translateY(0);
+		        transform: translateY(0)
+	}
+}
+
+@-webkit-keyframes ekuwomanarmrotate {
+	0%,
+	45%,
+	65%,
+	85%,
+	to {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
+	}
+	55%,
+	75% {
+		-webkit-transform: rotate(10deg);
+		        transform: rotate(10deg)
 	}
 }
 
@@ -193,11 +373,29 @@ ul svg{
 	65%,
 	85%,
 	to {
-		transform: rotate(0deg)
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
 	}
 	55%,
 	75% {
-		transform: rotate(10deg)
+		-webkit-transform: rotate(10deg);
+		        transform: rotate(10deg)
+	}
+}
+
+@-webkit-keyframes ekuwomanarmbackrotate {
+	0%,
+	45%,
+	65%,
+	85%,
+	to {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
+	}
+	55%,
+	75% {
+		-webkit-transform: rotate(-13deg);
+		        transform: rotate(-13deg)
 	}
 }
 
@@ -207,11 +405,29 @@ ul svg{
 	65%,
 	85%,
 	to {
-		transform: rotate(0deg)
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
 	}
 	55%,
 	75% {
-		transform: rotate(-13deg)
+		-webkit-transform: rotate(-13deg);
+		        transform: rotate(-13deg)
+	}
+}
+
+@-webkit-keyframes manscreenpopup {
+	0%,
+	45%,
+	55%,
+	65%,
+	75%,
+	85% {
+		-webkit-transform: scale(0);
+		        transform: scale(0)
+	}
+	to {
+		-webkit-transform: scale(1);
+		        transform: scale(1)
 	}
 }
 
@@ -222,30 +438,60 @@ ul svg{
 	65%,
 	75%,
 	85% {
-		transform: scale(0)
+		-webkit-transform: scale(0);
+		        transform: scale(0)
 	}
 	to {
-		transform: scale(1)
+		-webkit-transform: scale(1);
+		        transform: scale(1)
+	}
+}
+
+@-webkit-keyframes manscreenfloat {
+	0%,
+	to {
+		-webkit-transform: translateY(0);
+		        transform: translateY(0)
+	}
+	50% {
+		-webkit-transform: translateY(-10px);
+		        transform: translateY(-10px)
 	}
 }
 
 @keyframes manscreenfloat {
 	0%,
 	to {
-		transform: translateY(0)
+		-webkit-transform: translateY(0);
+		        transform: translateY(0)
 	}
 	50% {
-		transform: translateY(-10px)
+		-webkit-transform: translateY(-10px);
+		        transform: translateY(-10px)
+	}
+}
+
+@-webkit-keyframes backhairwave {
+	0%,
+	to {
+		-webkit-transform: scaleX(1) skewX(0) skewY(0);
+		        transform: scaleX(1) skewX(0) skewY(0)
+	}
+	50% {
+		-webkit-transform: scaleX(1.07) skewX(3deg) skewY(5deg);
+		        transform: scaleX(1.07) skewX(3deg) skewY(5deg)
 	}
 }
 
 @keyframes backhairwave {
 	0%,
 	to {
-		transform: scaleX(1) skewX(0) skewY(0)
+		-webkit-transform: scaleX(1) skewX(0) skewY(0);
+		        transform: scaleX(1) skewX(0) skewY(0)
 	}
 	50% {
-		transform: scaleX(1.07) skewX(3deg) skewY(5deg)
+		-webkit-transform: scaleX(1.07) skewX(3deg) skewY(5deg);
+		        transform: scaleX(1.07) skewX(3deg) skewY(5deg)
 	}
 }
 
@@ -253,7 +499,8 @@ ul svg{
 	width: 70%;
 	position: absolute;
 	right: -200px;
-	animation: slowShow 2s
+	-webkit-animation: slowShow 2s;
+	        animation: slowShow 2s
 }
 
 #ku.svgmate #Bluearmbot,
@@ -261,138 +508,210 @@ ul svg{
 #ku.svgmate #chairbackbar,
 #ku.svgmate #man,
 #ku.svgmate .mankauf {
-	animation-name: ekumanslidein;
-	animation-iteration-count: 1;
-	animation-duration: 1.2s;
-	animation-timing-function: ease-out;
-	transform-origin: 502px 454px
+	-webkit-animation-name: ekumanslidein;
+	        animation-name: ekumanslidein;
+	-webkit-animation-iteration-count: 1;
+	        animation-iteration-count: 1;
+	-webkit-animation-duration: 1.2s;
+	        animation-duration: 1.2s;
+	-webkit-animation-timing-function: ease-out;
+	        animation-timing-function: ease-out;
+	-webkit-transform-origin: 502px 454px;
+	    -ms-transform-origin: 502px 454px;
+	        transform-origin: 502px 454px
 }
 
 #ku.svgmate #Bluearmbot,
 #ku.svgmate #Chair,
 #ku.svgmate #chairbackbar,
 #ku.svgmate .mankauf {
-	animation-duration: 1.5s
+	-webkit-animation-duration: 1.5s;
+	        animation-duration: 1.5s
 }
 
 #ku.svgmate #Bluearmbot {
-	animation-name: ekumanarmrotate;
-	animation-iteration-count: infinite;
-	animation-duration: 1.8s;
-	animation-delay: 1.2s;
-	transform-origin: 448.122px 403.482px
+	-webkit-animation-name: ekumanarmrotate;
+	        animation-name: ekumanarmrotate;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+	-webkit-animation-duration: 1.8s;
+	        animation-duration: 1.8s;
+	-webkit-animation-delay: 1.2s;
+	        animation-delay: 1.2s;
+	-webkit-transform-origin: 448.122px 403.482px;
+	    -ms-transform-origin: 448.122px 403.482px;
+	        transform-origin: 448.122px 403.482px
 }
 
 #ku.svgmate .mankauf {
-	animation-name: ekumanhairwobble;
-	animation-duration: 1.38s;
-	transform-origin: 396.257px 260.5px
+	-webkit-animation-name: ekumanhairwobble;
+	        animation-name: ekumanhairwobble;
+	-webkit-animation-duration: 1.38s;
+	        animation-duration: 1.38s;
+	-webkit-transform-origin: 396.257px 260.5px;
+	    -ms-transform-origin: 396.257px 260.5px;
+	        transform-origin: 396.257px 260.5px
 }
 
 #ku.svgmate #Chair_1_,
 #ku.svgmate #Woman,
 #ku.svgmate #back-arm,
 #ku.svgmate #backleg_1_ {
-	animation-name: ekuwomanlidein;
-	animation-iteration-count: 1;
-	animation-duration: 1.8s;
-	animation-timing-function: ease-out;
-	transform-origin: 502px 454px
+	-webkit-animation-name: ekuwomanlidein;
+	        animation-name: ekuwomanlidein;
+	-webkit-animation-iteration-count: 1;
+	        animation-iteration-count: 1;
+	-webkit-animation-duration: 1.8s;
+	        animation-duration: 1.8s;
+	-webkit-animation-timing-function: ease-out;
+	        animation-timing-function: ease-out;
+	-webkit-transform-origin: 502px 454px;
+	    -ms-transform-origin: 502px 454px;
+	        transform-origin: 502px 454px
 }
 
 #ku.svgmate #Chair_1_ {
-	animation-duration: 1.95s
+	-webkit-animation-duration: 1.95s;
+	        animation-duration: 1.95s
 }
 
 #ku.svgmate #Laptop,
 #ku.svgmate #keyboard {
-	animation-name: kulapdropin;
-	animation-iteration-count: 1;
-	animation-duration: 2s;
-	animation-timing-function: ease-in-out;
-	transform-origin: 648.689px 361.659px
+	-webkit-animation-name: kulapdropin;
+	        animation-name: kulapdropin;
+	-webkit-animation-iteration-count: 1;
+	        animation-iteration-count: 1;
+	-webkit-animation-duration: 2s;
+	        animation-duration: 2s;
+	-webkit-animation-timing-function: ease-in-out;
+	        animation-timing-function: ease-in-out;
+	-webkit-transform-origin: 648.689px 361.659px;
+	    -ms-transform-origin: 648.689px 361.659px;
+	        transform-origin: 648.689px 361.659px
 }
 
 #ku.svgmate #keyboard {
-	animation-duration: 2.5s;
-	transform-origin: 479.857px 383px
+	-webkit-animation-duration: 2.5s;
+	        animation-duration: 2.5s;
+	-webkit-transform-origin: 479.857px 383px;
+	    -ms-transform-origin: 479.857px 383px;
+	        transform-origin: 479.857px 383px
 }
 
 #ku.svgmate #lowerarm,
 #ku.svgmate #lowervackarm {
-	animation-name: ekuwomanarmrotate;
-	animation-iteration-count: infinite;
-	animation-duration: 1.8s;
-	animation-delay: 2.1s;
-	animation-timing-function: ease-out;
-	transform-origin: 751.134px 385.578px
+	-webkit-animation-name: ekuwomanarmrotate;
+	        animation-name: ekuwomanarmrotate;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+	-webkit-animation-duration: 1.8s;
+	        animation-duration: 1.8s;
+	-webkit-animation-delay: 2.1s;
+	        animation-delay: 2.1s;
+	-webkit-animation-timing-function: ease-out;
+	        animation-timing-function: ease-out;
+	-webkit-transform-origin: 751.134px 385.578px;
+	    -ms-transform-origin: 751.134px 385.578px;
+	        transform-origin: 751.134px 385.578px
 }
 
 #ku.svgmate #lowervackarm {
-	animation-name: ekuwomanarmbackrotate;
-	transform-origin: 736.882px 386px
+	-webkit-animation-name: ekuwomanarmbackrotate;
+	        animation-name: ekuwomanarmbackrotate;
+	-webkit-transform-origin: 736.882px 386px;
+	    -ms-transform-origin: 736.882px 386px;
+	        transform-origin: 736.882px 386px
 }
 
 #ku.svgmate #Man_screen .greenscreen,
 #ku.svgmate #Man_screen .redscreen,
 #ku.svgmate #Man_screen .screenbutton {
-	animation-name: manscreenpopup;
-	animation-iteration-count: 1;
-	animation-duration: 3s;
-	animation-timing-function: ease-in-out;
-	transform-origin: 526.882px 383px
+	-webkit-animation-name: manscreenpopup;
+	        animation-name: manscreenpopup;
+	-webkit-animation-iteration-count: 1;
+	        animation-iteration-count: 1;
+	-webkit-animation-duration: 3s;
+	        animation-duration: 3s;
+	-webkit-animation-timing-function: ease-in-out;
+	        animation-timing-function: ease-in-out;
+	-webkit-transform-origin: 526.882px 383px;
+	    -ms-transform-origin: 526.882px 383px;
+	        transform-origin: 526.882px 383px
 }
 
 #ku.svgmate #Man_screen .greenscreen,
 #ku.svgmate #Man_screen .redscreen {
-	animation-duration: 3s
+	-webkit-animation-duration: 3s;
+	        animation-duration: 3s
 }
 
 #ku.svgmate #Man_screen .greenscreen {
-	animation-duration: 3.3s
+	-webkit-animation-duration: 3.3s;
+	        animation-duration: 3.3s
 }
 
 #ku.svgmate #Man_screen,
 #ku.svgmate #Man_screen .greenscrmove,
 #ku.svgmate #Man_screen .redskmove,
 #ku.svgmate .womscreenmove {
-	animation-name: manscreenfloat;
-	animation-iteration-count: infinite;
-	animation-duration: 9s;
-	animation-timing-function: ease-in-out
+	-webkit-animation-name: manscreenfloat;
+	        animation-name: manscreenfloat;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+	-webkit-animation-duration: 9s;
+	        animation-duration: 9s;
+	-webkit-animation-timing-function: ease-in-out;
+	        animation-timing-function: ease-in-out
 }
 
 #ku.svgmate #Man_screen .greenscrmove,
 #ku.svgmate #Man_screen .redskmove {
-	animation-duration: 6s
+	-webkit-animation-duration: 6s;
+	        animation-duration: 6s
 }
 
 #ku.svgmate #Man_screen .greenscrmove {
-	animation-duration: 7.2s
+	-webkit-animation-duration: 7.2s;
+	        animation-duration: 7.2s
 }
 
 #ku.svgmate #hairback,
 #ku.svgmate #womanscreen {
-	animation-name: manscreenpopup;
-	animation-iteration-count: 1;
-	animation-duration: 3.9s;
-	animation-timing-function: ease-in-out;
-	transform-origin: 648.689px 361.659px
+	-webkit-animation-name: manscreenpopup;
+	        animation-name: manscreenpopup;
+	-webkit-animation-iteration-count: 1;
+	        animation-iteration-count: 1;
+	-webkit-animation-duration: 3.9s;
+	        animation-duration: 3.9s;
+	-webkit-animation-timing-function: ease-in-out;
+	        animation-timing-function: ease-in-out;
+	-webkit-transform-origin: 648.689px 361.659px;
+	    -ms-transform-origin: 648.689px 361.659px;
+	        transform-origin: 648.689px 361.659px
 }
 
 #ku.svgmate #hairback {
-	animation-name: backhairwave;
-	animation-iteration-count: infinite;
-	animation-duration: 3.3s;
-	transform-origin: 785.132px 295.833px
+	-webkit-animation-name: backhairwave;
+	        animation-name: backhairwave;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+	-webkit-animation-duration: 3.3s;
+	        animation-duration: 3.3s;
+	-webkit-transform-origin: 785.132px 295.833px;
+	    -ms-transform-origin: 785.132px 295.833px;
+	        transform-origin: 785.132px 295.833px
 }
 
 /*HAMBURGER*/
 
 .header{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	padding: 50px;
-	justify-content: flex-end;
+	-webkit-box-pack: end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
 	height: 10%;
 }
 
@@ -400,6 +719,8 @@ ul svg{
 	left: 50px;
 	top: 50px;
 	cursor: pointer;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
   }
   .toggle input {
@@ -417,6 +738,8 @@ ul svg{
 	right: 0;
 	bottom: 0;
 	transition: -webkit-transform .5s ease;
+	-webkit-transition: -webkit-transform .5s ease;
+	-o-transition: transform .5s ease;
 	transition: transform .5s ease;
 	transition: transform .5s ease, -webkit-transform .5s ease;
   }
@@ -448,22 +771,28 @@ ul svg{
 	position: absolute;
 	-webkit-backface-visibility: hidden;
 	transition: border-radius .3s ease, -webkit-transform .5s ease;
+	-webkit-transition: border-radius .3s ease, -webkit-transform .5s ease;
+	-o-transition: transform .5s ease, border-radius .3s ease;
 	transition: transform .5s ease, border-radius .3s ease;
 	transition: transform .5s ease, border-radius .3s ease, -webkit-transform .5s ease;
   }
   .toggle input + div div span:before {
 	left: 0;
 	-webkit-transform-origin: 0 50%;
-			transform-origin: 0 50%;
+			-ms-transform-origin: 0 50%;
+	    transform-origin: 0 50%;
 	-webkit-transform: translate(1px, 0) scaleX(1.1);
-			transform: translate(1px, 0) scaleX(1.1);
+			-ms-transform: translate(1px, 0) scaleX(1.1);
+	    transform: translate(1px, 0) scaleX(1.1);
   }
   .toggle input + div div span:after {
 	right: 0;
 	-webkit-transform-origin: 100% 50%;
-			transform-origin: 100% 50%;
+			-ms-transform-origin: 100% 50%;
+	    transform-origin: 100% 50%;
 	-webkit-transform: translate(-1px, 0) scaleX(1.1);
-			transform: translate(-1px, 0) scaleX(1.1);
+			-ms-transform: translate(-1px, 0) scaleX(1.1);
+	    transform: translate(-1px, 0) scaleX(1.1);
   }
   .toggle input + div svg {
 	display: block;
@@ -480,53 +809,67 @@ ul svg{
 	stroke-dasharray: 0 82.801 8 82.801;
 	stroke-dashoffset: 82.801;
 	-webkit-transform-origin: 50% 50%;
-			transform-origin: 50% 50%;
+			-ms-transform-origin: 50% 50%;
+	    transform-origin: 50% 50%;
 	-webkit-backface-visibility: hidden;
 	-webkit-transform: scale(1);
-			transform: scale(1);
+			-ms-transform: scale(1);
+	    transform: scale(1);
 	transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, -webkit-transform .5s ease;
+	-webkit-transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, -webkit-transform .5s ease;
+	-o-transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, transform .5s ease;
 	transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, transform .5s ease;
 	transition: stroke-dashoffset .5s ease, stroke-dasharray .6s ease, transform .5s ease, -webkit-transform .5s ease;
   }
   .toggle input + div svg:nth-child(3) {
 	-webkit-transform: rotate(180deg) scale(1);
-			transform: rotate(180deg) scale(1);
+			-ms-transform: rotate(180deg) scale(1);
+	    transform: rotate(180deg) scale(1);
   }
   .toggle input:checked + div div {
 	-webkit-transform: rotate(90deg);
-			transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+	    transform: rotate(90deg);
   }
   .toggle input:checked + div div span:first-child:before {
 	-webkit-transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
-			transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
+			-ms-transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
+	    transform: rotate(45deg) translate(2.2px, -3px) scaleX(1.05);
   }
   .toggle input:checked + div div span:first-child:after {
 	-webkit-transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
-			transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
+			-ms-transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
+	    transform: rotate(-45deg) translate(-2.2px, -3px) scaleX(1.05);
   }
   .toggle input:checked + div div span:last-child:before {
 	-webkit-transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
-			transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
+			-ms-transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
+	    transform: rotate(-45deg) translate(2.2px, 3px) scaleX(1.05);
   }
   .toggle input:checked + div div span:last-child:after {
 	-webkit-transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
-			transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
+			-ms-transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
+	    transform: rotate(45deg) translate(-2.2px, 3px) scaleX(1.05);
   }
   .toggle input:checked + div svg {
 	stroke-dashoffset: 62;
 	stroke-dasharray: 0 82.801 62 82.801;
 	-webkit-transform: rotate(90deg);
-			transform: rotate(90deg);
+			-ms-transform: rotate(90deg);
+	    transform: rotate(90deg);
   }
   .toggle input:checked + div svg:nth-child(3) {
 	-webkit-transform: rotate(270deg);
-			transform: rotate(270deg);
+			-ms-transform: rotate(270deg);
+	    transform: rotate(270deg);
   }
   
 
 .btnmore {
 	cursor: none;
 	display: none;
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
 	transition: all .5s;
 }
 
@@ -538,6 +881,8 @@ ul svg{
 	height: .08511vw;
 	background: #725AC1;
 	position: absolute;
+	-webkit-transition: width .6s;
+	-o-transition: width .6s;
 	transition: width .6s;
 	bottom: 15px;
 	bottom: .6383vw;
@@ -545,7 +890,8 @@ ul svg{
 }
 
 .btnmore:hover:before {
-	animation: hoverlink 2s ease-in-out infinite;
+	-webkit-animation: hoverlink 2s ease-in-out infinite;
+	        animation: hoverlink 2s ease-in-out infinite;
 	width: 0%
 }
 
@@ -553,6 +899,33 @@ ul svg{
 	margin: 25px 10px;
 	margin-top: 70px;
 	color: #725AC1;
+}
+
+@-webkit-keyframes hoverlink {
+	0% {
+		width: 0%;
+		left: 0
+	}
+	20% {
+		width: 100%;
+		left: 0;
+		right: 0
+	}
+	21% {
+		width: 100%;
+		left: auto;
+		right: 0
+	}
+	40% {
+		right: 0;
+		left: auto;
+		width: 0%
+	}
+	100% {
+		width: 0%;
+		left: auto;
+		right: 0
+	}
 }
 
 @keyframes hoverlink {
@@ -586,24 +959,44 @@ ul svg{
 .landingPage {
 	width: 100%;
 	height: 90%;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: flex-start;
-	flex-direction: row;
-	align-items: center;
+	-webkit-box-pack: start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 	padding: 120px;
 	padding-top: 30px;
 	position: relative;
+	-webkit-transition:all 1s linear;
+	-o-transition:all 1s linear;
 	transition:all 1s linear;
 	left: 0;
 }
 
 .landingPage__title{
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: column;
-	align-items: flex-start
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: start;
+	    -ms-flex-align: start;
+	        align-items: flex-start
 }
 .landingPage__title h1, .landingPage__title h3{
 	margin: 10px;
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
 	transition: all .5s;
 }
 
@@ -613,6 +1006,8 @@ ul svg{
 }
 
 .pelement {
+	-webkit-transition: all 260ms ease-out !important;
+	-o-transition: all 260ms ease-out !important;
 	transition: all 260ms ease-out !important;
 	will-change: transform;
 }
@@ -622,9 +1017,15 @@ ul svg{
 	right: 50px;
 	bottom: 70px;
 	z-index: 10;
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 }
 
 .bottom h5{
@@ -641,9 +1042,15 @@ ul svg{
 }
 
 .control {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 
 }
 
@@ -665,14 +1072,19 @@ ul svg{
 	height: 1.70213vw;
 	background: #8D86C9;
 	border-radius: 50%;
-	transform: scale(0, 0);
+	-webkit-transform: scale(0, 0);
+	    -ms-transform: scale(0, 0);
+	        transform: scale(0, 0);
 	opacity: 0;
-	transition: transform 260ms, opacity 160ms
+	-webkit-transition: opacity 160ms, -webkit-transform 260ms;
+	transition: opacity 160ms, -webkit-transform 260ms;
+	-o-transition: transform 260ms, opacity 160ms;
+	transition: transform 260ms, opacity 160ms;
+	transition: transform 260ms, opacity 160ms, -webkit-transform 260ms
 }
 
 .control>div:hover:before {
 	opacity: 1;
-	-moz-transform: scale(1, 1);
 	-ms-transform: scale(1, 1);
 	-webkit-transform: scale(1, 1);
 	transform: scale(1.2)
@@ -719,8 +1131,6 @@ ul svg{
 	left: 50%;
 	margin: -4px 0 0 -4px;
 	background: #8D86C9;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	opacity: 0;
 	cursor: none;
@@ -747,11 +1157,8 @@ ul svg{
 	left: 50%;
 	margin: -35px 0 0 -35px;
 	background: #1f2126;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	-webkit-backface-visibility: hidden;
-	-moz-transform: scale(0, 0);
 	-ms-transform: scale(0, 0);
 	-webkit-transform: scale(0, 0);
 	transform: scale(0, 0);
@@ -772,8 +1179,6 @@ ul svg{
 	left: 50%;
 	margin: -25px 0 0 -25px;
 	background: transparent;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	-webkit-backface-visibility: hidden;
 	cursor: none;
@@ -781,14 +1186,14 @@ ul svg{
 	pointer-events: none;
 	will-change: transform;
 	overflow: hidden;
-	-moz-transform: scale(0, 0);
 	-ms-transform: scale(0, 0);
 	-webkit-transform: scale(0, 0);
 	transform: scale(0, 0)
 }
 
 .cursor .loading #preload {
-	animation: rotate 1s linear infinite;
+	-webkit-animation: rotate 1s linear infinite;
+	        animation: rotate 1s linear infinite;
 	width: 100%;
 	height: 100%
 }
@@ -797,36 +1202,78 @@ ul svg{
 	stroke: #000;
 	stroke-width: 2;
 	fill: transparent;
-	transform-origin: center;
-	animation: svg-preloader 2s ease-in-out forwards infinite
+	-webkit-transform-origin: center;
+	    -ms-transform-origin: center;
+	        transform-origin: center;
+	-webkit-animation: svg-preloader 2s ease-in-out forwards infinite;
+	        animation: svg-preloader 2s ease-in-out forwards infinite
+}
+
+@-webkit-keyframes svg-preloader {
+	0% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 121;
+		-webkit-transform: rotate(0deg) rotateY(0deg);
+		        transform: rotate(0deg) rotateY(0deg)
+	}
+	50% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 211;
+		-webkit-transform: rotate(0deg) rotateY(0deg);
+		        transform: rotate(0deg) rotateY(0deg)
+	}
+	50.01% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 211;
+		-webkit-transform: rotate(-85deg) rotateY(180deg);
+		        transform: rotate(-85deg) rotateY(180deg)
+	}
+	100% {
+		stroke-dasharray: 121;
+		stroke-dashoffset: 121;
+		-webkit-transform: rotate(-85deg) rotateY(180deg);
+		        transform: rotate(-85deg) rotateY(180deg)
+	}
 }
 
 @keyframes svg-preloader {
 	0% {
 		stroke-dasharray: 121;
 		stroke-dashoffset: 121;
-		transform: rotate(0deg) rotateY(0deg)
+		-webkit-transform: rotate(0deg) rotateY(0deg);
+		        transform: rotate(0deg) rotateY(0deg)
 	}
 	50% {
 		stroke-dasharray: 121;
 		stroke-dashoffset: 211;
-		transform: rotate(0deg) rotateY(0deg)
+		-webkit-transform: rotate(0deg) rotateY(0deg);
+		        transform: rotate(0deg) rotateY(0deg)
 	}
 	50.01% {
 		stroke-dasharray: 121;
 		stroke-dashoffset: 211;
-		transform: rotate(-85deg) rotateY(180deg)
+		-webkit-transform: rotate(-85deg) rotateY(180deg);
+		        transform: rotate(-85deg) rotateY(180deg)
 	}
 	100% {
 		stroke-dasharray: 121;
 		stroke-dashoffset: 121;
-		transform: rotate(-85deg) rotateY(180deg)
+		-webkit-transform: rotate(-85deg) rotateY(180deg);
+		        transform: rotate(-85deg) rotateY(180deg)
+	}
+}
+
+@-webkit-keyframes rotate {
+	to {
+		-webkit-transform: rotate(-360deg);
+		        transform: rotate(-360deg)
 	}
 }
 
 @keyframes rotate {
 	to {
-		transform: rotate(-360deg)
+		-webkit-transform: rotate(-360deg);
+		        transform: rotate(-360deg)
 	}
 }
 
@@ -838,11 +1285,8 @@ ul svg{
 	left: 50%;
 	margin: -15px 0 0 -15px;
 	background: transparent;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	-webkit-backface-visibility: hidden;
-	-moz-transform: scale(0, 0);
 	-ms-transform: scale(0, 0);
 	-webkit-transform: scale(0, 0);
 	transform: scale(0, 0);
@@ -862,7 +1306,7 @@ ul svg{
 	margin-top: -12px;
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
 	opacity: 0
-}
+}	
 
 .drag .next svg path {
 	fill: #8D86C9
@@ -887,13 +1331,10 @@ ul svg{
 	top: 50%;
 	left: 50%;
 	margin: -15px 0 0 -15px;
-	-moz-transform: scale(0, 0);
 	-ms-transform: scale(0, 0);
 	-webkit-transform: scale(0, 0);
 	transform: scale(0, 0);
 	border: 2px solid #fff;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
 	border-radius: 50%
 }
 
