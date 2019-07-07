@@ -9,29 +9,50 @@
     <script src="prod.js"></script>
   </head>
   <body>
-    <div class="header">
-      <label class="toggle pointer pelement">
-          <input type="checkbox">
-          <div>
+      <div class="header">
+          <label class="toggle pointer pelement active">
+              <input type="checkbox">
               <div>
-                  <span></span>
-                  <span></span>
+                  <div>
+                      <span></span>
+                      <span></span>
+                  </div>
+                  <svg>
+                      <use xlink:href="#path">
+                  </svg>
+                  <svg>
+                      <use xlink:href="#path">
+                  </svg>
               </div>
-              <svg>
-                  <use xlink:href="#path">
-              </svg>
-              <svg>
-                  <use xlink:href="#path">
-              </svg>
+          </label>
+                  
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" id="path">
+                  <path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
+              </symbol>
+          </svg>
+        </div>
+          <div class="inner-container">
+              <i class="menu-bg top"></i>
+              <i class="menu-bg middle"></i>
+              <i class="menu-bg bottom"></i>
+            <div class="menu-container">
+              <ul class="menu">
+                <li>
+                  <a href="#">Login</a>
+                </li>
+                <li>
+                  <a href="#">Create account</a>
+                </li>
+                <li>
+                  <a href="#">Support</a>
+                </li>
+                <li>
+                  <a href="#">About</a>
+                </li>
+              </ul>
+            </div>
           </div>
-      </label>
-              
-      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-          <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" id="path">
-              <path d="M22,22 L2,22 C2,11 11,2 22,2 C33,2 42,11 42,22"></path>
-          </symbol>
-      </svg>
-    </div>
     <div class="socials">
       <ul>
         <li class="tw pointin fixpoint">
@@ -84,7 +105,7 @@
         <h3>and we are not.</h3>
         <a class="btnmore pelement pointin" data-power="3"><h5>ABOUT US</h5></a>
       </div>
-      <div class="bottom">
+      <div class="bottomSection">
         <h5>01</h5>
         <h5>/</h5>
         <h5>05</h5>      
@@ -353,7 +374,7 @@
         <h1 class="jd">We don't like to be average</h1>
         <h3>and we are not.</h3>
       </div>
-      <div class="bottom">
+      <div class="bottomSection">
         <h5>01</h5>
         <h5>/</h5>
         <h5>05</h5>      

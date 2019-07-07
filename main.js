@@ -1,380 +1,789 @@
-var $box = $('.box'),
-    $loader = $('.cursor .loading'),
-    $drag = $('.drag'),
-    inter = 30,
-    speed = 0;
+var $box = $(".box"),
+  $loader = $(".cursor .loading"),
+  $drag = $(".drag"),
+  inter = 30,
+  speed = 0;
 
 function moveBox(e) {
-    var timesel = 0.3;
+  var timesel = 0.3;
 
-    if ($drag.hasClass('grab')) {
-        timesel = 0.05;
+  if ($drag.hasClass("grab")) {
+    timesel = 0.05;
+  }
+
+  $box.each(function(index, val) {
+    if (!$(this).hasClass("fixit")) {
+      if (index == 1) {
+        TweenLite.to($(this), timesel, {
+          css: {left: e.pageX, top: e.pageY},
+          delay: 0 + index / 750
+        });
+      } else {
+        TweenLite.to($(this), 0.05, {
+          css: {left: e.pageX, top: e.pageY},
+          delay: 0 + index / 750
+        });
+      }
+    } else {
+      TweenLite.to($(this), timesel, {
+        css: {opacity: 1, scale: 1},
+        delay: 0 + index / 750
+      });
     }
-
-    $box.each(function (index, val) {
-        if (!$(this).hasClass('fixit')) {
-            if (index == 1) {
-                TweenLite.to($(this), timesel, { css: { left: e.pageX, top: e.pageY }, delay: 0 + (index / 750) });
-            } else {
-                TweenLite.to($(this), 0.05, { css: { left: e.pageX, top: e.pageY }, delay: 0 + (index / 750) });
-            }
-        } else {
-            TweenLite.to($(this), timesel, { css: { opacity: 1, scale: 1 }, delay: 0 + (index / 750) });
-        }
-    });
+  });
 }
 
 function changeDragType(e) {
-    if ($drag.hasClass('grab')) {
-        $drag.each(function (index, val) {
-            TweenLite.to($box.eq(1), 0.3, { scale: 0.8, delay: 0, ease: Circ.easeOut });
-            TweenLite.to($(this), 0.3, { scale: 0.8, delay: 0, overwrite: "all", ease: Circ.easeOut });
-            TweenLite.to($(this).find('.next'), 0.3, { x: 25, delay: 0, overwrite: "all", ease: Circ.easeOut });
-            TweenLite.to($(this).find('.prev'), 0.3, { x: -25, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-        });
-    } else {
-        $drag.each(function (index, val) {
-            TweenLite.to($box.eq(1), 0.3, { scale: 1, delay: 0, ease: Circ.easeOut });
-            TweenLite.to($(this), 0.3, { scale: 1, delay: 0, overwrite: "all", ease: Circ.easeOut });
-            TweenLite.to($(this).find('.next'), 0.3, { x: 0, delay: 0, overwrite: "all", ease: Circ.easeOut });
-            TweenLite.to($(this).find('.prev'), 0.3, { x: 0, delay: 0, overwrite: "all", ease: Circ.easeOut });
-        });
-    }
+  if ($drag.hasClass("grab")) {
+    $drag.each(function(index, val) {
+      TweenLite.to($box.eq(1), 0.3, {scale: 0.8, delay: 0, ease: Circ.easeOut});
+      TweenLite.to($(this), 0.3, {
+        scale: 0.8,
+        delay: 0,
+        overwrite: "all",
+        ease: Circ.easeOut
+      });
+      TweenLite.to($(this).find(".next"), 0.3, {
+        x: 25,
+        delay: 0,
+        overwrite: "all",
+        ease: Circ.easeOut
+      });
+      TweenLite.to($(this).find(".prev"), 0.3, {
+        x: -25,
+        delay: 0,
+        overwrite: "all",
+        ease: Circ.easeInOut
+      });
+    });
+  } else {
+    $drag.each(function(index, val) {
+      TweenLite.to($box.eq(1), 0.3, {scale: 1, delay: 0, ease: Circ.easeOut});
+      TweenLite.to($(this), 0.3, {
+        scale: 1,
+        delay: 0,
+        overwrite: "all",
+        ease: Circ.easeOut
+      });
+      TweenLite.to($(this).find(".next"), 0.3, {
+        x: 0,
+        delay: 0,
+        overwrite: "all",
+        ease: Circ.easeOut
+      });
+      TweenLite.to($(this).find(".prev"), 0.3, {
+        x: 0,
+        delay: 0,
+        overwrite: "all",
+        ease: Circ.easeOut
+      });
+    });
+  }
 }
 
 function moveDrag(e) {
-    var timesel = 0.3;
+  var timesel = 0.3;
 
-    if ($drag.hasClass('grab')) {
-        timesel = 0;
-    }
+  if ($drag.hasClass("grab")) {
+    timesel = 0;
+  }
 
-    if ($(e.target).hasClass('fixtarget') || $(e.target).hasClass('fixpoint')) {
-        TweenLite.to($drag, 0.1, { opacity: 0, overwrite: "all", ease: Circ.easeOut });
-        //return false;
-    } else {
-        TweenLite.to($drag, 0.1, { opacity: 1, ease: Circ.easeOut });
-    }
-
-    $drag.each(function (index, val) {
-
-        var scaleval = 1;
-
-        if ($drag.hasClass('grab')) {
-            scaleval = 0.8;
-        }
-
-        TweenLite.to($(this), timesel, { scale: scaleval, left: e.pageX, top: e.pageY, delay: 0 + (index / 750) });
-
-        TweenLite.to($(this).find('.next'), 0.2, { opacity: 1, delay: 0, ease: Circ.easeInOut });
-        TweenLite.to($(this).find('.prev'), 0.2, { opacity: 1, delay: 0, ease: Circ.easeInOut });
+  if ($(e.target).hasClass("fixtarget") || $(e.target).hasClass("fixpoint")) {
+    TweenLite.to($drag, 0.1, {
+      opacity: 0,
+      overwrite: "all",
+      ease: Circ.easeOut
     });
+    //return false;
+  } else {
+    TweenLite.to($drag, 0.1, {opacity: 1, ease: Circ.easeOut});
+  }
+
+  $drag.each(function(index, val) {
+    var scaleval = 1;
+
+    if ($drag.hasClass("grab")) {
+      scaleval = 0.8;
+    }
+
+    TweenLite.to($(this), timesel, {
+      scale: scaleval,
+      left: e.pageX,
+      top: e.pageY,
+      delay: 0 + index / 750
+    });
+
+    TweenLite.to($(this).find(".next"), 0.2, {
+      opacity: 1,
+      delay: 0,
+      ease: Circ.easeInOut
+    });
+    TweenLite.to($(this).find(".prev"), 0.2, {
+      opacity: 1,
+      delay: 0,
+      ease: Circ.easeInOut
+    });
+  });
 }
 function hideDrag(e) {
-    var timesel = 0.2;
+  var timesel = 0.2;
 
-    if ($drag.hasClass('grab')) {
-        timesel = 0;
-    }
+  if ($drag.hasClass("grab")) {
+    timesel = 0;
+  }
 
-    $drag.each(function (index, val) {
-        TweenLite.to($(this).find('.next'), 0.3, { x: 0, delay: 0, overwrite: "all", ease: Circ.easeOut });
-        TweenLite.to($(this).find('.prev'), 0.3, { x: 0, delay: 0, overwrite: "all", ease: Circ.easeOut });
-        TweenLite.to($(this), timesel, { scale: 0, left: e.pageX, top: e.pageY, overwrite: "all", ease: Circ.easeInOut });
+  $drag.each(function(index, val) {
+    TweenLite.to($(this).find(".next"), 0.3, {
+      x: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeOut
     });
+    TweenLite.to($(this).find(".prev"), 0.3, {
+      x: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeOut
+    });
+    TweenLite.to($(this), timesel, {
+      scale: 0,
+      left: e.pageX,
+      top: e.pageY,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+  });
 }
-
 
 function moveNext(e) {
-    $drag.each(function (index, val) {
-        TweenLite.to($(this), 0.2, { scale: 1, left: e.pageX, top: e.pageY, delay: 0 + (index / 750) });
+  $drag.each(function(index, val) {
+    TweenLite.to($(this), 0.2, {
+      scale: 1,
+      left: e.pageX,
+      top: e.pageY,
+      delay: 0 + index / 750
     });
+  });
 }
 function showNext(e) {
-    $drag.each(function (index, val) {
-        TweenLite.to($(this).find('.next'), 0.2, { x: 0, opacity: 1, delay: 0 + (index / 750) });
-        TweenLite.to($(this).find('.prev'), 0.2, { x: -50, opacity: 0, delay: 0 + (index / 750) });
+  $drag.each(function(index, val) {
+    TweenLite.to($(this).find(".next"), 0.2, {
+      x: 0,
+      opacity: 1,
+      delay: 0 + index / 750
     });
+    TweenLite.to($(this).find(".prev"), 0.2, {
+      x: -50,
+      opacity: 0,
+      delay: 0 + index / 750
+    });
+  });
 }
 function hideNext(e) {
-    $drag.each(function (index, val) {
-        TweenLite.to($(this).find('.next'), 0.2, { x: 50, opacity: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-        TweenLite.to($(this).find('.prev'), 0.2, { x: -50, opacity: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-        TweenLite.to($(this), 0.2, { scale: 0, left: e.pageX, top: e.pageY, overwrite: "all", ease: Circ.easeInOut });
+  $drag.each(function(index, val) {
+    TweenLite.to($(this).find(".next"), 0.2, {
+      x: 50,
+      opacity: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
     });
+    TweenLite.to($(this).find(".prev"), 0.2, {
+      x: -50,
+      opacity: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+    TweenLite.to($(this), 0.2, {
+      scale: 0,
+      left: e.pageX,
+      top: e.pageY,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+  });
 }
-
 
 function movePrev(e) {
-    $drag.each(function (index, val) {
-        TweenLite.to($(this), 0.2, { scale: 1, left: e.pageX, top: e.pageY, delay: 0 + (index / 750) });
+  $drag.each(function(index, val) {
+    TweenLite.to($(this), 0.2, {
+      scale: 1,
+      left: e.pageX,
+      top: e.pageY,
+      delay: 0 + index / 750
     });
+  });
 }
 function showPrev(e) {
-    $drag.each(function (index, val) {
-        TweenLite.to($(this).find('.next'), 0.2, { x: 50, opacity: 0, delay: 0 + (index / 750) });
-        TweenLite.to($(this).find('.prev'), 0.2, { x: 0, opacity: 1, delay: 0 + (index / 750) });
+  $drag.each(function(index, val) {
+    TweenLite.to($(this).find(".next"), 0.2, {
+      x: 50,
+      opacity: 0,
+      delay: 0 + index / 750
     });
+    TweenLite.to($(this).find(".prev"), 0.2, {
+      x: 0,
+      opacity: 1,
+      delay: 0 + index / 750
+    });
+  });
 }
 function hidePrev(e) {
-    $drag.each(function (index, val) {
-        TweenLite.to($(this).find('.next'), 0.2, { x: 50, opacity: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-        TweenLite.to($(this).find('.prev'), 0.2, { x: -50, opacity: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-        TweenLite.to($(this), 0.2, { scale: 0, left: e.pageX, top: e.pageY, overwrite: "all", ease: Circ.easeInOut });
+  $drag.each(function(index, val) {
+    TweenLite.to($(this).find(".next"), 0.2, {
+      x: 50,
+      opacity: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
     });
+    TweenLite.to($(this).find(".prev"), 0.2, {
+      x: -50,
+      opacity: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+    TweenLite.to($(this), 0.2, {
+      scale: 0,
+      left: e.pageX,
+      top: e.pageY,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+  });
 }
 
 var showPointBase = [30, 30];
 
 function showPoint(e) {
-    busy = true;
+  busy = true;
 
-    if ($(e.target).hasClass('fixpoint')) {
-        $box.eq(1).addClass('fixit');
-        var fixtarget = $(e.target).find('.fixtarget');
-    } else if ($(e.target).closest('.fixpoint').length) {
-        $box.eq(1).addClass('fixit');
-        // caselist
-        if ($(e.target).closest('.fixpoint').hasClass('info')) {
-            var fixtarget = $(e.target).closest('.info').find('.fixtarget');
-        } else {
-            var fixtarget = $(e.target);
-        }
-        console.log("DSA")
+  if ($(e.target).hasClass("fixpoint")) {
+    $box.eq(1).addClass("fixit");
+    var fixtarget = $(e.target).find(".fixtarget");
+  } else if ($(e.target).closest(".fixpoint").length) {
+    $box.eq(1).addClass("fixit");
+    // caselist
+    if (
+      $(e.target)
+        .closest(".fixpoint")
+        .hasClass("info")
+    ) {
+      var fixtarget = $(e.target)
+        .closest(".info")
+        .find(".fixtarget");
+    } else {
+      var fixtarget = $(e.target);
     }
+    console.log("DSA");
+  }
 
-    if ($(e.target).hasClass('fixpoint') || $(e.target).closest('.fixpoint').length) {
-        var subadd = 10;
-        twidth = $(fixtarget).width() + subadd,
-            theight = $(fixtarget).height() + subadd,
-            pos = $(fixtarget).offset(),
-            posTop = pos.top + subadd,
-            posLeft = pos.left + subadd;
+  if (
+    $(e.target).hasClass("fixpoint") ||
+    $(e.target).closest(".fixpoint").length
+  ) {
+    var subadd = 10;
+    (twidth = $(fixtarget).width() + subadd),
+      (theight = $(fixtarget).height() + subadd),
+      (pos = $(fixtarget).offset()),
+      (posTop = pos.top + subadd),
+      (posLeft = pos.left + subadd);
 
-        TweenLite.to($box.eq(1), 0.5, { scale: 1, width: twidth, height: theight, left: posLeft, top: posTop, opacity: 1, overwrite: "all", ease: Circ.easeOut });
-    }
+    TweenLite.to($box.eq(1), 0.5, {
+      scale: 1,
+      width: twidth,
+      height: theight,
+      left: posLeft,
+      top: posTop,
+      opacity: 1,
+      overwrite: "all",
+      ease: Circ.easeOut
+    });
+  }
 }
 function hidePoint(e) {
-    $box.eq(1).removeClass('fixit');
+  $box.eq(1).removeClass("fixit");
 
-    busy = false;
-    TweenLite.to($box.eq(1), 0.3, { scale: 1, width: showPointBase[0], height: showPointBase[1], marginTop: -showPointBase[1] / 2, marginLeft: -showPointBase[0] / 2, opacity: 1, overwrite: "all", ease: Circ.easeOut });
+  busy = false;
+  TweenLite.to($box.eq(1), 0.3, {
+    scale: 1,
+    width: showPointBase[0],
+    height: showPointBase[1],
+    marginTop: -showPointBase[1] / 2,
+    marginLeft: -showPointBase[0] / 2,
+    opacity: 1,
+    overwrite: "all",
+    ease: Circ.easeOut
+  });
 }
 
 function moveLoader(e) {
-    $loader.each(function (index, val) {
-        if ($(this).hasClass('showed')) {
-            TweenLite.to($(this), 0.05, { scale: 1, rotate: "360deg", left: e.pageX, top: e.pageY, delay: 0 + (index / 750) });
-        } else {
-            TweenLite.to($(this), 0.5, {
-                scale: 1, rotate: "360deg", left: e.pageX, top: e.pageY, delay: 0 + (index / 750), onComplete() {
-                    $loader.addClass('showed');
-                }
-            });
+  $loader.each(function(index, val) {
+    if ($(this).hasClass("showed")) {
+      TweenLite.to($(this), 0.05, {
+        scale: 1,
+        rotate: "360deg",
+        left: e.pageX,
+        top: e.pageY,
+        delay: 0 + index / 750
+      });
+    } else {
+      TweenLite.to($(this), 0.5, {
+        scale: 1,
+        rotate: "360deg",
+        left: e.pageX,
+        top: e.pageY,
+        delay: 0 + index / 750,
+        onComplete() {
+          $loader.addClass("showed");
         }
-    });
+      });
+    }
+  });
 }
 
 function changeCursor(e) {
-    TweenLite.to($box.eq(0), 0.05, { backgroundColor: "#ffffff", left: e.pageX, top: e.pageY });
-    TweenLite.to($box.eq(1), 0.05, { borderColor: "#ffffff", left: e.pageX, top: e.pageY });
+  TweenLite.to($box.eq(0), 0.05, {
+    backgroundColor: "#ffffff",
+    left: e.pageX,
+    top: e.pageY
+  });
+  TweenLite.to($box.eq(1), 0.05, {
+    borderColor: "#ffffff",
+    left: e.pageX,
+    top: e.pageY
+  });
 }
 function restoreCursor(e) {
-    TweenLite.to($box.eq(0), 0.05, { backgroundColor: "#fa343d", left: e.pageX, top: e.pageY });
-    TweenLite.to($box.eq(1), 0.05, { borderColor: "#fa343d", left: e.pageX, top: e.pageY });
+  TweenLite.to($box.eq(0), 0.05, {
+    backgroundColor: "#fa343d",
+    left: e.pageX,
+    top: e.pageY
+  });
+  TweenLite.to($box.eq(1), 0.05, {
+    borderColor: "#fa343d",
+    left: e.pageX,
+    top: e.pageY
+  });
 }
 
 $box.each(function(index, val) {
-	index = index + 1;
-	TweenMax.set(
-		$(this),{
-			autoAlpha: 1 - (0.0333 * index),
-			delay:0
-		});
+  index = index + 1;
+  TweenMax.set($(this), {
+    autoAlpha: 1 - 0.0333 * index,
+    delay: 0
+  });
 });
 
-TweenLite.to($box.eq(1), 0, { scale: 1, opacity: 1, overwrite: "all" });
+TweenLite.to($box.eq(1), 0, {scale: 1, opacity: 1, overwrite: "all"});
 
-$(document).on('mousemove', moveBox);
-$('.dragit').on('mousemove', moveDrag);
-$('.dragit').on('mouseleave', hideDrag);
+$(document).on("mousemove", moveBox);
+$(".dragit").on("mousemove", moveDrag);
+$(".dragit").on("mouseleave", hideDrag);
 
-$('.whitecursor').on('mousemove', changeCursor);
-$('.whitecursor').on('mouseleave', restoreCursor);
+$(".whitecursor").on("mousemove", changeCursor);
+$(".whitecursor").on("mouseleave", restoreCursor);
 
-$('.nextcur').on('mousemove', moveNext);
-$('.nextcur').on('mouseenter', showNext);
-$('.nextcur').on('mouseleave', hideNext);
+$(".nextcur").on("mousemove", moveNext);
+$(".nextcur").on("mouseenter", showNext);
+$(".nextcur").on("mouseleave", hideNext);
 
-$('.nextcur').on('mousemove', movePrev);
-$('.nextcur').on('mouseenter', showPrev);
-$('.nextcur').on('mouseleave', hidePrev);
+$(".nextcur").on("mousemove", movePrev);
+$(".nextcur").on("mouseenter", showPrev);
+$(".nextcur").on("mouseleave", hidePrev);
 
 // sub pointer
-$('.pointin').on('mouseenter', showPoint);
-$('.pointin').on('mouseleave', hidePoint);
+$(".pointin").on("mouseenter", showPoint);
+$(".pointin").on("mouseleave", hidePoint);
 
-
-$('.pointer').hover(
-    function () {
-        TweenLite.to($box.eq(0), 0.1, { opacity: 0, repeat: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-        TweenLite.to($box.eq(1), 0.3, { scale: 0, opacity: 0, repeat: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-    }, function () {
-        TweenLite.to($box.eq(0), 0.1, { opacity: 1, repeat: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-        TweenLite.to($box.eq(1), 0.3, { scale: 1, opacity: 1, repeat: 0, delay: 0, overwrite: "all", ease: Circ.easeInOut });
-    }
+$(".pointer").hover(
+  function() {
+    TweenLite.to($box.eq(0), 0.1, {
+      opacity: 0,
+      repeat: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+    TweenLite.to($box.eq(1), 0.3, {
+      scale: 0,
+      opacity: 0,
+      repeat: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+  },
+  function() {
+    TweenLite.to($box.eq(0), 0.1, {
+      opacity: 1,
+      repeat: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+    TweenLite.to($box.eq(1), 0.3, {
+      scale: 1,
+      opacity: 1,
+      repeat: 0,
+      delay: 0,
+      overwrite: "all",
+      ease: Circ.easeInOut
+    });
+  }
 );
 
-$(document).mouseleave(function () {
-    $box.each(function (index, val) {
-        TweenMax.set(
-            $(this), {
-                scale: 0,
-                delay: 0
-            });
+$(document).mouseleave(function() {
+  $box.each(function(index, val) {
+    TweenMax.set($(this), {
+      scale: 0,
+      delay: 0
     });
+  });
 });
-$(document).mouseenter(function () {
-    $box.each(function (index, val) {
-        TweenMax.set(
-            $(this), {
-                scale: 1,
-                delay: 0
-            });
+$(document).mouseenter(function() {
+  $box.each(function(index, val) {
+    TweenMax.set($(this), {
+      scale: 1,
+      delay: 0
     });
+  });
 });
-
 
 if ($(window).width() > 992) {
-    $(".pelement").each(function (index) {
-        $(this).hover(
-            function () {
-                $(this).addClass('hovered');
-            }, function () {
-                $(this).removeClass('hovered');
+  $(".pelement").each(function(index) {
+    $(this).hover(
+      function() {
+        $(this).addClass("hovered");
+      },
+      function() {
+        $(this).removeClass("hovered");
 
-                $(this).css({
-                    transform: 'translate3d(0px, 0px, 0px)'
-                });
-            }
-        );
-
-        $(this).mousemove(function (e) {
-            var power = $(this).data('power');
-
-            const bounds = this.getBoundingClientRect();
-            const centerX = bounds.left + (bounds.width / 2);
-            const centerY = bounds.top + (bounds.height / 2);
-
-            const deltaX = Math.floor((centerX - e.clientX)) * power * -1;
-            const deltaY = Math.floor((centerY - e.clientY)) * power * -1;
-
-            TweenLite.to($(this), 0, {
-                x: deltaX,
-                y: deltaY,
-            });
+        $(this).css({
+          transform: "translate3d(0px, 0px, 0px)"
         });
+      }
+    );
+
+    $(this).mousemove(function(e) {
+      var power = $(this).data("power");
+
+      const bounds = this.getBoundingClientRect();
+      const centerX = bounds.left + bounds.width / 2;
+      const centerY = bounds.top + bounds.height / 2;
+
+      const deltaX = Math.floor(centerX - e.clientX) * power * -1;
+      const deltaY = Math.floor(centerY - e.clientY) * power * -1;
+
+      TweenLite.to($(this), 0, {
+        x: deltaX,
+        y: deltaY
+      });
     });
+  });
 }
 function showPoint(e) {
-    busy = true;
+  busy = true;
 
-    if ($(e.target).hasClass('fixpoint')) {
-        $box.eq(1).addClass('fixit');
-        var fixtarget = $(e.target).find('.fixtarget');
-    } else if ($(e.target).closest('.fixpoint').length) {
-        $box.eq(1).addClass('fixit');
-        // caselist
-        if ($(e.target).closest('.fixpoint').hasClass('info')) {
-            var fixtarget = $(e.target).closest('.info').find('.fixtarget');
-        } else {
-            var fixtarget = $(e.target);
-        }
+  if ($(e.target).hasClass("fixpoint")) {
+    $box.eq(1).addClass("fixit");
+    var fixtarget = $(e.target).find(".fixtarget");
+  } else if ($(e.target).closest(".fixpoint").length) {
+    $box.eq(1).addClass("fixit");
+    // caselist
+    if (
+      $(e.target)
+        .closest(".fixpoint")
+        .hasClass("info")
+    ) {
+      var fixtarget = $(e.target)
+        .closest(".info")
+        .find(".fixtarget");
+    } else {
+      var fixtarget = $(e.target);
     }
+  }
 
-    if ($(e.target).hasClass('fixpoint') || $(e.target).closest('.fixpoint').length) {
-        var subadd = 10;
-        twidth = $(fixtarget).width() + subadd,
-            theight = $(fixtarget).height() + subadd,
-            pos = $(fixtarget).offset(),
-            posTop = pos.top + subadd,
-            posLeft = pos.left + subadd;
+  if (
+    $(e.target).hasClass("fixpoint") ||
+    $(e.target).closest(".fixpoint").length
+  ) {
+    var subadd = 10;
+    (twidth = $(fixtarget).width() + subadd),
+      (theight = $(fixtarget).height() + subadd),
+      (pos = $(fixtarget).offset()),
+      (posTop = pos.top + subadd),
+      (posLeft = pos.left + subadd);
 
-        TweenLite.to($box.eq(1), 0.5, { scale: 1, width: twidth, height: theight, left: posLeft, top: posTop, opacity: 1, overwrite: "all", ease: Circ.easeOut });
-    }
+    TweenLite.to($box.eq(1), 0.5, {
+      scale: 1,
+      width: twidth,
+      height: theight,
+      left: posLeft,
+      top: posTop,
+      opacity: 1,
+      overwrite: "all",
+      ease: Circ.easeOut
+    });
+  }
 }
 function hidePoint(e) {
-    $box.eq(1).removeClass('fixit');
+  $box.eq(1).removeClass("fixit");
 
-    busy = false;
-    TweenLite.to($box.eq(1), 0.3, { scale: 1, width: showPointBase[0], height: showPointBase[1], marginTop: -showPointBase[1] / 2, marginLeft: -showPointBase[0] / 2, opacity: 1, overwrite: "all", ease: Circ.easeOut });
+  busy = false;
+  TweenLite.to($box.eq(1), 0.3, {
+    scale: 1,
+    width: showPointBase[0],
+    height: showPointBase[1],
+    marginTop: -showPointBase[1] / 2,
+    marginLeft: -showPointBase[0] / 2,
+    opacity: 1,
+    overwrite: "all",
+    ease: Circ.easeOut
+  });
 }
 function animateText(el, reverse) {
-    if (!reverse) {
-        $slidetext = $(el).textillate({
-            in: {
-                effect: 'fadeInRight',
-                delay: 20,
-            },
-            out: {
-                effect: 'fadeOut',
-                delay: 0,
-            }
-        });
-    } else {
-        $slidetext = $(el).textillate({
-            in: {
-                effect: 'fadeInLeft',
-                delay: 20,
-                reverse: true,
-            },
-            out: {
-                effect: 'fadeOut',
-                delay: 0,
-            }
-        });
-    }
+  if (!reverse) {
+    $slidetext = $(el).textillate({
+      in: {
+        effect: "fadeInRight",
+        delay: 20
+      },
+      out: {
+        effect: "fadeOut",
+        delay: 0
+      }
+    });
+  } else {
+    $slidetext = $(el).textillate({
+      in: {
+        effect: "fadeInLeft",
+        delay: 20,
+        reverse: true
+      },
+      out: {
+        effect: "fadeOut",
+        delay: 0
+      }
+    });
+  }
 }
 
-$.fn.parallax = function (resistance, mouse) {
-    $el = $(this);
+$.fn.parallax = function(resistance, mouse) {
+  $el = $(this);
 
-    TweenLite.to($el, 1, {
-        x: ((mouse.clientX - window.innerWidth / 2) / resistance),
-        y: ((mouse.clientY - window.innerHeight / 2) / resistance),
-        //force3d: true,
-    });
+  TweenLite.to($el, 1, {
+    x: (mouse.clientX - window.innerWidth / 2) / resistance,
+    y: (mouse.clientY - window.innerHeight / 2) / resistance
+    //force3d: true,
+  });
 };
 function activateParallax() {
-    $(document).mousemove(function (e) {
-        $(".landingPage__title").parallax(30, e);
-    });
+  $(document).mousemove(function(e) {
+    $(".landingPage__title").parallax(30, e);
+  });
 }
 
-function nextSlide(active,next){
-    $(active).css('position','absolute')
-    $(active).css('left','-3000px')
-    setTimeout(() => {
-        $(active).css('display','none')
-    }, 1000);
+function nextSlide(active, next) {
+  $(active).css("position", "absolute");
+  $(active).css("left", "-3000px");
+  setTimeout(() => {
+    $(active).css("display", "none");
+  }, 1000);
 }
 
-$('.control .next').on( 'click', function() {
-    nextSlide('.landingPage')
-})
+$(".control .next").on("click", function() {
+  nextSlide(".landingPage");
+});
 
-
-
-animateText('.landingPage__title h1', false);
+animateText(".landingPage__title h1", false);
 setTimeout(() => {
-    $(".landingPage__title h3").css("display","block")
-    animateText('.landingPage__title h3', false);
+  $(".landingPage__title h3").css("visibility", "visible");
+  animateText(".landingPage__title h3", false);
 }, 800);
 setTimeout(() => {
-    $(".landingPage__title .btnmore").css("display","inline-block")
+  $(".landingPage__title .btnmore").css("visibility", "visible");
+}, 1500);
 
-},1500)
+activateParallax();
+var openTrigger = $(".menu-trigger");
+var openTriggerBottom = openTrigger.find(".menu-trigger-bar.bottom");
 
+//MENU
+var menuContainer = $(".menu-container");
+var menu = $(".menu");
+var menuTop = $(".menu-bg.top");
+var menuMiddle = $(".menu-bg.middle");
+var menuBottom = $(".menu-bg.bottom");
 
-activateParallax()
+//TL
+var tlOpen = new TimelineMax({paused: true});
+var tlClose = new TimelineMax({paused: true});
 
+//OPEN TIMELINE
+tlOpen
+  .add("preOpen")
+  .to(
+    openTriggerBottom,
+    0.4,
+    {
+      x: "+=80px",
+      y: "-=80px",
+      delay: 0.2,
+      ease: Power4.easeIn
+    },
+    "preOpen"
+  )
+  .add("open", "-=0.4")
+  .to(
+    menuTop,
+    0.8,
+    {
+      y: "13%",
+      ease: Power4.easeInOut,
+    },
+    "open"
+  )
+  .to(
+    menuMiddle,
+    0.8,
+    {
+      scaleY: 5.5,
+      ease: Power4.easeInOut
+    },
+    "open"
+  )
+  .to(
+    menuBottom,
+    0.8,
+    {
+      y: "-114%",
+      ease: Power4.easeInOut
+    },
+    "open"
+  )
+  .fromTo(
+    menu,
+    0.6,
+    {
+      y: 30,
+      opacity: 0,
+      visibility: "hidden"
+    },
+    {
+      y: 0,
+      opacity: 1,
+      visibility: "visible",
+      ease: Power4.easeOut
+    },
+    "-=0.2"
+  )
+  .add("preClose", "-=0.8");
+
+//CLOSE TIMELINE
+tlClose
+  .add("close")
+  .to(
+    menuTop,
+    0.2,
+    {
+      ease: Power4.easeInOut
+    },
+    "close"
+  )
+  .to(
+    menuMiddle,
+    0.2,
+    {
+      ease: Power4.easeInOut
+    },
+    "close"
+  )
+  .to(
+    menuBottom,
+    0.2,
+    {
+      ease: Power4.easeInOut
+    },
+    "close"
+  )
+  .to(
+    menu,
+    0.6,
+    {
+      y: 20,
+      opacity: 0,
+      ease: Power4.easeOut,
+      onComplete: function() {
+        menu.css("visibility", "hidden");
+      }
+    },
+    "close"
+  )
+  .to(
+    menuTop,
+    0.8,
+    {
+      y: "-113%",
+      ease: Power4.easeInOut
+    },
+    "close",
+    "+=0.2"
+  )
+  .to(
+    menuMiddle,
+    0.8,
+    {
+      scaleY: 0,
+      ease: Power4.easeInOut
+    },
+    "close",
+    "+=0.2"
+  )
+  .to(
+    menuBottom,
+    0.8,
+    {
+      y: "23%",
+      ease: Power4.easeInOut,
+      onComplete: function() {
+        menuTop.css("background-color", "#ffffff");
+        menuMiddle.css("background-color", "#ffffff");
+        menuBottom.css("background-color", "#ffffff");
+      }
+    },
+    "close",
+    "+=0.2"
+  );
+let open = false;
+
+//EVENTS
+$(".toggle div").on("click", function() {
+  if (open === false) {
+    if (tlOpen.progress() < 1) {
+      tlOpen.play();
+    } else {
+      tlOpen.restart();
+    }
+    this.checked = true;
+    open = true;
+    setTimeout(() => {
+        $(".inner-container").css("z-index", "50");
+        $(".menu-bg").css("opacity", "1");
+    }, 100);
+  } else {
+    if (tlOpen.progress() < 1) {
+      tlClose.play();
+    } else {
+      tlClose.restart();
+    }
+    this.checked = false;
+    open = false;
+    setTimeout(() => {
+        $(".inner-container").css("z-index", "0");
+        $(".menu-bg").css("opacity", "0");
+    }, 300);
+  }
+});
