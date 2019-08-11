@@ -1,36 +1,37 @@
 var mousetracking,
-    swiping
-
+  swiping,
+  transitioning,
+  page = 0;
 function mouseTrack() {
-    if (mousetracking) {
-        TweenMax.set(".mouse-track", {
-            autoAlpha: 1
-        })
-        TweenMax.to(".mouse-track .outer-circle", 0.2, {
-            left: mouseX,
-            top: mouseY
-        })
-        TweenMax.to(".mouse-track .inner-circle", 0.4, {
-            left: mouseX,
-            top: mouseY
-        })
-        TweenMax.to(".mouse-track .arrow-left", 0.2, {
-            left: mouseX,
-            top: mouseY
-        })
-        TweenMax.to(".mouse-track .arrow-right", 0.2, {
-            left: mouseX,
-            top: mouseY
-        })
-        TweenMax.to(".mouse-track .play", 0.35, {
-            left: mouseX,
-            top: mouseY,
-        })
-        TweenMax.to(".mouse-track .stop", 0.35, {
-            left: mouseX,
-            top: mouseY
-        })
-    }
+  if (mousetracking) {
+    TweenMax.set(".mouse-track", {
+      autoAlpha: 1
+    });
+    TweenMax.to(".mouse-track .outer-circle", 0.2, {
+      left: mouseX,
+      top: mouseY
+    });
+    TweenMax.to(".mouse-track .inner-circle", 0.4, {
+      left: mouseX,
+      top: mouseY
+    });
+    TweenMax.to(".mouse-track .arrow-left", 0.2, {
+      left: mouseX,
+      top: mouseY
+    });
+    TweenMax.to(".mouse-track .arrow-right", 0.2, {
+      left: mouseX,
+      top: mouseY
+    });
+    TweenMax.to(".mouse-track .play", 0.35, {
+      left: mouseX,
+      top: mouseY
+    });
+    TweenMax.to(".mouse-track .stop", 0.35, {
+      left: mouseX,
+      top: mouseY
+    });
+  }
 }
 
 $(document).on("touchstart touchmove", function(e) {
@@ -62,30 +63,14 @@ $("body")
 $("body")
   .on("mousedown touchstart", function(e) {
     e.preventDefault();
-    if (!mouseInVideo) {
-      TweenMax.to(".mouse-track .outer-circle", 0.5, {
-        strokeWidth: 6,
-        height: 6,
-        width: 6
-      });
-    }
-    if (!transitioning && !intro) {
-      menuCDSwitch = true;
-      menuCountdown();
-      swiping = true;
-    }
-    if (intro) {
-      menuCDSwitch = true;
-      introCountdown();
-      swiping = true;
-    }
+    menuCDSwitch = true;
+    swiping = true;
   })
   .on("mousemove touchmove", function(e) {
     e.preventDefault();
     if (swiping && !transitioning) {
       distanceRaw = mouseThen - mouseX;
       distance = Math.abs(distanceRaw);
-      swipe();
       if (mouseThen > mouseX) {
         movingLeft = true;
         movingRight = false;
@@ -103,12 +88,6 @@ $("body")
       }
     }
     mouseTrack();
-  })
-  .on("mouseup touchend", function(e) {
-    e.preventDefault();
-    swiping = false;
-    swipeCancel();
-    distance = 0;
   });
 
 function animText() {
@@ -186,3 +165,77 @@ $("a.hover").each(function(i, el) {
       });
     });
 });
+
+function load() {
+  setTimeout(function() {
+    $(".counter .page").html(page + 1);
+    $(".counter .divider").html("/");
+    $(".counter .total").html(5);
+  }, 1000);
+  sideText();
+
+  TweenMax.staggerTo(
+    ".menu-top a",
+    0.5,
+    {
+      autoAlpha: 1,
+      y: 0,
+      delay: 1
+    },
+    0.2
+  );
+  TweenMax.to(".bottomMenu", 0.5, {
+    autoAlpha: 1,
+    delay: 1
+  });
+  TweenMax.set(window, {
+    transitioning: false,
+    delay: 0.3
+  });
+}
+
+function sideText() {
+  TweenMax.to(".line", 0.5, {
+    height: "0%",
+    top: "100%"
+  });
+  TweenMax.to(".counter span", 0.5, {
+    marginBottom: -45,
+    delay: 0.5
+  });
+  TweenMax.set(".line", {
+    top: 0,
+    delay: 1
+  });
+  TweenMax.to(".line", 0.5, {
+    ease: Elastic.easeOut.config(1, 1),
+    height: "50%",
+    delay: 1
+  });
+  TweenMax.set(".counter span", {
+    marginBottom: 45,
+    delay: 1
+  });
+  TweenMax.staggerTo(
+    ".counter span",
+    0.5,
+    {
+      ease: Elastic.easeOut.config(1, 1),
+      marginBottom: 0,
+      delay: 1.5
+    },
+    0.03
+  );
+}
+
+$(window).on("mousewheel", function(event) {
+  event.preventDefault();
+  TweenMax.set(window, {
+    page: "+= 1",
+    delay: 1,
+    onComplete: function() {
+      projectIn();
+    }
+  });
+});
+load();
