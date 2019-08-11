@@ -1,33 +1,38 @@
 @font-face {
-  font-family: "Rubik";
-  font-weight: 500;
-  font-style: normal;
-  src: url("../fonts/Rubik-500.eot");
-  src: url("../fonts/Rubik-500d41d.eot?#iefix") format("embedded-opentype"),
-    local("../fonts/Rubik Medium"), local("../fonts/Rubik-500"),
-    url("../fonts/Rubik-500.woff2") format("woff2"),
-    url("../fonts/Rubik-500.woff") format("woff"),
-    url("../fonts/Rubik-500.ttf") format("truetype"),
-    url("../fonts/Rubik-500.svg#Rubik") format("svg");
+	font-family: 'Teko';
+	font-weight: 400;
+	font-style: normal;
+	src: local("Teko Regular"), local("Teko-400"), url("fonts/Teko-Regular.ttf") format("truetype")
 }
 
 @font-face {
-  font-family: "Rubik";
-  font-weight: 700;
-  font-style: normal;
-  src: url("../fonts/Rubik-700.eot");
-  src: url("../fonts/Rubik-700d41d.eot?#iefix") format("embedded-opentype"),
-    local("../fonts/Rubik Bold"), local("../fonts/Rubik-700"),
-    url("../fonts/Rubik-700.woff2") format("woff2"),
-    url("../fonts/Rubik-700.woff") format("woff"),
-    url("../fonts/Rubik-700.ttf") format("truetype"),
-    url("../fonts/Rubik-700.svg#Rubik") format("svg");
+	font-family: 'Teko';
+	font-weight: 500;
+	font-style: normal;
+	src: local("Teko Medium"), local("Teko-500"), url("fonts/Teko-Medium.woff2") format("woff2"), url("fonts/Teko-Medium.woff") format("woff"), url("fonts/Teko-Medium.ttf") format("truetype")
 }
 
-body {
+
+@font-face {
+  font-family: 'Gotham Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Gotham Medium'), url('fonts/GothamMedium.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Gotham Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Gotham Bold'), url('fonts/GothamBold.woff') format('woff');
+    }
+    
+    
+
+  body{
   background-color: #212322;
   color: #aebebf !important;
-  font-family: "Montserrat";
+  font-family: "Gotham Bold";
   margin: 0;
   position: relative;
   overflow: hidden;
@@ -38,10 +43,103 @@ body {
   box-sizing: border-box;
 }
 
+a span{
+  cursor: pointer;
+}
+
+  .mouse-track {
+	pointer-events: none;
+	position: absolute;
+	z-index: 1000;
+	opacity: 0
+}
+
+  .mouse-track .outer-circle {
+	stroke: #969292;
+	transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+	stroke-width: 2px;
+	fill: none;
+	height: 18px;
+	width: 18px;
+	overflow: visible;
+	position: absolute
+}
+
+  .mouse-track .outer-circle .countdown {
+	opacity: 0;
+	stroke: #f14343;
+	position: absolute;
+	stroke-dashoffset: 125px;
+	stroke-dasharray: 125px;
+	stroke-width: 4px
+}
+
+  .mouse-track .inner-circle {
+	stroke: #969292;
+	transform: translateX(-50%) translateY(-50%);
+	stroke-width: 2px;
+	fill: none;
+	height: 2px;
+	width: 2px;
+	opacity: 0.6;
+	overflow: visible;
+	position: absolute
+}
+
+  .mouse-track .arrow-right {
+	stroke: #f14343;
+	opacity: 0;
+	visibility: hidden;
+	stroke-width: 2px;
+	transform: rotate(180deg);
+	margin-left: 10px;
+	margin-top: -7px;
+	position: absolute
+}
+
+  .mouse-track .arrow-left {
+	stroke: #f14343;
+	opacity: 0;
+	margin-left: -20px;
+	margin-top: -6px;
+	visibility: hidden;
+	stroke-width: 2px;
+	position: absolute
+}
+
+  .mouse-track .play {
+	fill: #969292;
+	opacity: 1;
+	margin-top: -6px;
+	stroke-width: 2px;
+	margin-top: -18px;
+	margin-left: -14px;
+	transform: scale(0);
+	position: absolute
+}
+
+  .mouse-track .stop {
+	fill: #969292;
+	height: 38px;
+	width: 38px;
+	margin-left: -19px;
+	margin-top: -19px;
+	transform: scale(0);
+	position: absolute
+}
+
+@media (max-width: 600px) {
+	  .mouse-track {
+		opacity: 0 !important;
+		visibility: hidden !important
+	}
+}
+
 .layout {
   position: absolute;
   width: 100%;
   height: 100%;
+  padding: 20px 30px
 }
 
 .topbar{
@@ -70,15 +168,20 @@ body {
   stop-color: #171717;
 }
 .bottomMenu {
+  user-select: none;
   width: 45px;
   position: fixed;
   opacity: 1;
   height: 100px;
-  left: 82px;
+  right: 30px;
   bottom: 110px;
   z-index: 113;
   display: flex;
   align-items: flex-end;
+}
+.bottomMenu span{
+  font-family: 'Teko';
+  font-weight: 500
 }
 
 .bottomMenu::after {
@@ -100,7 +203,6 @@ body {
   height: 0;
   margin-left: -1px;
   left: 50%;
-  margin-bottom: 10px;
   position: relative;
 }
 
