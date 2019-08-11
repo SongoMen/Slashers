@@ -11,26 +11,6 @@ function mouseTrack() {
       left: mouseX,
       top: mouseY
     });
-    TweenMax.to(".mouse-track .inner-circle", 0.4, {
-      left: mouseX,
-      top: mouseY
-    });
-    TweenMax.to(".mouse-track .arrow-left", 0.2, {
-      left: mouseX,
-      top: mouseY
-    });
-    TweenMax.to(".mouse-track .arrow-right", 0.2, {
-      left: mouseX,
-      top: mouseY
-    });
-    TweenMax.to(".mouse-track .play", 0.35, {
-      left: mouseX,
-      top: mouseY
-    });
-    TweenMax.to(".mouse-track .stop", 0.35, {
-      left: mouseX,
-      top: mouseY
-    });
   }
 }
 
@@ -100,9 +80,6 @@ function animText() {
   $(".hover .word").html(function(index, html) {
     return html.replace(/\S/g, '<span class="letter">$&</span>');
   });
-  $(".intro h1").each(function(i, el) {
-    $(el).prepend("<small>" + ("0" + (page + 1)).slice(-2) + "</small>");
-  });
 }
 animText();
 $("a.hover").each(function(i, el) {
@@ -146,12 +123,6 @@ $("a.hover").each(function(i, el) {
         strokeWidth: 2,
         autoAlpha: 0
       });
-      TweenMax.set(".countdown", {
-        autoAlpha: 0
-      });
-      TweenMax.to(".mouse-track .inner-circle", 0.5, {
-        autoAlpha: 0
-      });
     })
     .on("mouseleave", function() {
       TweenMax.to(".mouse-track .outer-circle", 0.5, {
@@ -160,9 +131,7 @@ $("a.hover").each(function(i, el) {
         strokeWidth: 2,
         autoAlpha: 1
       });
-      TweenMax.to(".mouse-track .inner-circle", 0.5, {
-        autoAlpha: 0.6
-      });
+
     });
 });
 
