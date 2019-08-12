@@ -131,7 +131,6 @@ $("a.hover").each(function(i, el) {
         strokeWidth: 2,
         autoAlpha: 1
       });
-
     });
 });
 
@@ -165,79 +164,88 @@ function load() {
 
 function sideText() {
   TweenMax.to(".line", 0.5, {
-      height: "0%",
-      top: "100%"
-  })
+    height: "0%",
+    top: "100%"
+  });
   TweenMax.to(".counter span", 0.5, {
-      marginBottom: -45,
-      delay: 0.5,
-  })
+    marginBottom: -45,
+    delay: 0.5
+  });
   TweenMax.set(".line", {
-      top: 0,
-      delay: 1
-  })
+    top: 0,
+    delay: .5
+  });
   TweenMax.to(".line", 0.5, {
-      ease: Elastic.easeOut.config(1, 1),
-      height: "100%",
-      delay: 1
-  })
+    ease: Elastic.easeOut.config(1, 1),
+    height: "100%",
+    delay: .5
+  });
   TweenMax.set(".counter span", {
-      marginBottom: 45,
-      delay: 1
-  })
-  TweenMax.staggerTo(".counter span", 0.5, {
+    marginBottom: 45,
+    delay: 1
+  });
+  TweenMax.staggerTo(
+    ".counter span",
+    0.5,
+    {
       ease: Elastic.easeOut.config(1, 1),
       marginBottom: 0,
-      delay: 1.5,
-  }, 0.03)
+      delay: 1
+    },
+    0.03
+  );
 }
-
-$(window).on("mousewheel", function(event) {
-  event.preventDefault();
-  TweenMax.set(window, {
-    page: "+= 1",
-    delay: 1,
-    onComplete: function() {
-      load();
-    }
-  });
-   if (event.deltaY == 1 && !transitioning) {
-    projectOut();
-    if (page > 0) {
+window.addEventListener(
+  "mousewheel",
+  function(event) {
+    event.preventDefault();
+    TweenMax.set(window, {
+      page: "+= 1",
+      delay: 1,
+      onComplete: function() {
+        load();
+      }
+    });
+    if (event.deltaY == 1 && !transitioning) {
+      projectOut();
+      if (page > 0) {
         TweenMax.set(window, {
-            page: "-= 1",
-            delay: 1,
-            onComplete: function() {
-                projectIn();
-            }
-        })
-    } else {
+          page: "-= 1",
+          delay: 1,
+          onComplete: function() {
+            load()
+          }
+        });
+      } else {
         TweenMax.set(window, {
-            page: 5 - 1,
-            delay: 1,
-            onComplete: function() {
-                projectIn();
-            }
-        })
+          page: 5 - 1,
+          delay: 1,
+          onComplete: function() {
+            load();
+          }
+        });
+      }
     }
-  }
-});
+  },
+  { passive: false }
+);
 
-$(".topbar__logo").on("mouseenter", function() {
-  TweenMax.to(".mouse-track .outer-circle", 0.5, {
+$(".topbar__logo")
+  .on("mouseenter", function() {
+    TweenMax.to(".mouse-track .outer-circle", 0.5, {
       height: 80,
       width: 80,
       strokeWidth: 2,
       autoAlpha: 0
+    });
   })
-}).on("mouseleave", function() {
-  TweenMax.to(".mouse-track .outer-circle", 0.5, {
+  .on("mouseleave", function() {
+    TweenMax.to(".mouse-track .outer-circle", 0.5, {
       height: 18,
       width: 18,
       strokeWidth: 2,
       autoAlpha: 1
-  })
-})
-
+    });
+  });
 
 load();
