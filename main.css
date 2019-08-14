@@ -214,3 +214,7 @@ a span:hover {
   bottom: 5px;
   margin-bottom: 45px;
 }
+
+#home{
+  display: none
+}

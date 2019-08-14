@@ -2,6 +2,7 @@ var mousetracking,
   swiping,
   transitioning,
   page = 0;
+sections = ["#home"];
 function mouseTrack() {
   if (mousetracking) {
     TweenMax.set(".mouse-track", {
@@ -134,11 +135,12 @@ $("a.hover").each(function(i, el) {
     });
 });
 
-function load() {
+function load(section) {
   setTimeout(function() {
     $(".counter .page").html(page + 1);
     $(".counter .divider").html("/");
     $(".counter .total").html(5);
+    if (section !== undefined) $(section).css("display", "flex");
   }, 1000);
   sideText();
 
@@ -173,12 +175,12 @@ function sideText() {
   });
   TweenMax.set(".line", {
     top: 0,
-    delay: .5
+    delay: 0.5
   });
   TweenMax.to(".line", 0.5, {
     ease: Elastic.easeOut.config(1, 1),
     height: "100%",
-    delay: .5
+    delay: 0.5
   });
   TweenMax.set(".counter span", {
     marginBottom: 45,
@@ -201,9 +203,9 @@ window.addEventListener(
     event.preventDefault();
     TweenMax.set(window, {
       page: "+= 1",
-      delay: 1,
+      delay: 0,
       onComplete: function() {
-        load();
+        load(sections[page+1]);
       }
     });
     if (event.deltaY == 1 && !transitioning) {
@@ -213,7 +215,7 @@ window.addEventListener(
           page: "-= 1",
           delay: 1,
           onComplete: function() {
-            load()
+            load();
           }
         });
       } else {
@@ -248,4 +250,4 @@ $(".topbar__logo")
     });
   });
 
-load();
+load("#home");
