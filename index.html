@@ -1,87 +1,73 @@
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="prod.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:600,700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="layout">
-      <div class="topbar">
-        <div class="topbar__logo">
-          <svg
-            version="1.1"
-            id="Warstwa_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 200 200"
-            style="enable-background:new 0 0 200 200;"
-            xml:space="preserve"
-          >
-            <style type="text/css">
-              .st0 {
-                fill: none;
-                stroke: #aebebf;
-                stroke-width: 10;
-                stroke-miterlimit: 10;
-              }
-            </style>
-            <g>
-              <path d="M101.3,65.1l-26.7,66.1H62.1l26.7-66.1H101.3z" />
-              <path d="M136.9,65.1l-26.7,66.1H97.8l26.7-66.1H136.9z" />
-            </g>
-            <path
-              class="st0"
-              d="M100,169.5L100,169.5c-38.4,0-69.5-31.1-69.5-69.5v0c0-38.4,31.1-69.5,69.5-69.5h0c38.4,0,69.5,31.1,69.5,69.5
-         v0C169.5,138.4,138.4,169.5,100,169.5z"
-            />
-          </svg>
-          SLASHERS
-        </div>
-        <div class="topbar__menu">
-          <a class="hover"><span>Contact</span> </a>
-        </div>
-      </div>
-      <svg class="gradient">
-        <lineargradient id="gradient1" gradientTransform="rotate(25)">
-          <stop offset="0%" />
-          <stop offset="100%" />
-        </lineargradient>
-        <filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency=".7" result="noisy" />
-        </filter>
-        <rect width="100%" height="100%" fill="url(#gradient1)" />
-        <rect width="100%" height="100%" filter="url(#noise)" opacity=".1" />
-      </svg>
-      <div class="bottomMenu" style="visibility: inherit; opacity: 1;">
-        <div class="line" style="bottom: 0px; height: 50%;"></div>
-        <div class="counter">
-          <span class="page" style="margin-bottom: 0px;"></span>
-          <span class="divider" style="margin-bottom: 0px;"></span>
-          <span class="total" style="margin-bottom: 0px;"></span>
-        </div>
-      </div>
-      <section id="home">
-        <h1>Hello</h1>
-      </section>
-    </div>
 
-    <div class="mouse-track">
-      <svg class="outer-circle">
-        <circle cx="50%" cy="50%" r="50%" />
-        <circle class="countdown" cx="50%" cy="50%" r="50%" />
-      </svg>
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="prod.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="layout">
+    <div class="topbar">
+      <div class="topbar__logo">
+        <svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 200 200" style="enable-background:new 0 0 200 200;" xml:space="preserve">
+          <style type="text/css">
+            .st0 {
+              fill: none;
+              stroke: #aebebf;
+              stroke-width: 10;
+              stroke-miterlimit: 10;
+            }
+          </style>
+          <g>
+            <path d="M101.3,65.1l-26.7,66.1H62.1l26.7-66.1H101.3z" />
+            <path d="M136.9,65.1l-26.7,66.1H97.8l26.7-66.1H136.9z" />
+          </g>
+          <path class="st0" d="M100,169.5L100,169.5c-38.4,0-69.5-31.1-69.5-69.5v0c0-38.4,31.1-69.5,69.5-69.5h0c38.4,0,69.5,31.1,69.5,69.5
+         v0C169.5,138.4,138.4,169.5,100,169.5z" />
+        </svg>
+        SLASHERS
+      </div>
+      <div class="topbar__menu">
+        <a class="hover"><span>Contact</span> </a>
+      </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
-    <script src="main.js"></script>
-  </body>
+    <svg class="gradient">
+      <lineargradient id="gradient1" gradientTransform="rotate(25)">
+        <stop offset="0%" />
+        <stop offset="100%" />
+      </lineargradient>
+      <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency=".7" result="noisy" />
+      </filter>
+      <rect width="100%" height="100%" fill="url(#gradient1)" />
+      <rect width="100%" height="100%" filter="url(#noise)" opacity=".1" />
+    </svg>
+    <div class="bottomMenu" style="visibility: inherit; opacity: 1;">
+      <div class="line" style="bottom: 0px; height: 50%;"></div>
+      <div class="counter">
+        <span class="page" style="margin-bottom: 0px;"></span>
+        <span class="divider" style="margin-bottom: 0px;"></span>
+        <span class="total" style="margin-bottom: 0px;"></span>
+      </div>
+    </div>
+    <section id="home">
+      <h1 class="heading--stroke heading--halftone">Hello</h1>
+      <h3>We are digital agency and we are waiting for you specializing in web development.</br> Scroll down to get to know us.</h3>
+    </section>
+  </div>
+
+  <div class="mouse-track">
+    <svg class="outer-circle">
+      <circle cx="50%" cy="50%" r="50%" />
+      <circle class="countdown" cx="50%" cy="50%" r="50%" />
+    </svg>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>

@@ -17,10 +17,10 @@
 }
 
 @font-face {
-  font-family: "Gotham Medium";
+  font-family: "Gotham Light";
   font-style: normal;
   font-weight: normal;
-  src: local("Gotham Medium"), url("fonts/GothamMedium.woff") format("woff");
+  src: local("Gotham Light"), url("fonts/GothamLight.woff") format("woff");
 }
 
 @font-face {
@@ -28,6 +28,46 @@
   font-style: normal;
   font-weight: normal;
   src: local("Gotham Bold"), url("fonts/GothamBold.woff") format("woff");
+}
+
+h1{
+  font-size: 100px;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+h3{
+  font-family: "Gotham Light";
+  line-height: 40px
+}
+
+.heading--stroke {
+  -webkit-text-stroke-width: 2px;
+  -moz-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #ff5851;
+  -moz-text-stroke-color: #ff5851;
+  text-shadow: 0px 0px 20px rgba(255, 88, 81, .1);
+  color: transparent;
+}
+.heading--halftone {
+  position: relative;
+}
+.heading--halftone:after {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHElEQVQYV2NUVFT8f//+fUYGBgYGMAEDcA5IBQCKJQVmn76DhAAAAABJRU5ErkJggg==") repeat;
+  -webkit-text-stroke-width: 0;
+  -moz-text-stroke-width: 0;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  font-size: 100px;
+  letter-spacing: 4px;
+  left: 5px;
+  top: 5px;
+  content: "Hello";
+  z-index: -1;
+  position: absolute;
 }
 
 body {
@@ -60,7 +100,6 @@ a span {
 a span:hover {
   color: #ff5851
 }
-
 
 .mouse-track {
   pointer-events: none;
@@ -108,7 +147,7 @@ a span:hover {
 }
 
 .topbar__logo svg{
-  width: 14%;
+  width: 50px;
   margin-right: 10px
 }
 .topbar__logo svg g path{
@@ -130,7 +169,7 @@ a span:hover {
 }
 
 .gradient stop:last-of-type {
-  stop-color: #171717;
+  stop-color: black;
 }
 .bottomMenu {
   user-select: none;
@@ -216,5 +255,8 @@ a span:hover {
 }
 
 #home{
-  display: none
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  height: 90%;
 }
