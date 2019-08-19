@@ -31,13 +31,16 @@
 }
 
 h1{
-  font-size: 100px;
-  letter-spacing: 4px;
-  margin: 0;
+  margin: 0
 }
 
+h1,h1.heading--halftone:after{
+  font-size: calc(40px + (150 - 40) * ((100vw - 300px) / (1920 - 300)));
+  letter-spacing: 4px;
+}
 h3{
   font-family: "Gotham Light";
+  font-size: calc(10px + (20 - 10) * ((100vw - 300px) / (1920 - 300)));
   line-height: 40px
 }
 
@@ -61,8 +64,6 @@ h3{
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
-  font-size: 100px;
-  letter-spacing: 4px;
   left: 5px;
   top: 5px;
   content: "Hello";
