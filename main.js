@@ -3,7 +3,7 @@ var mousetracking,
   transitioning,
   page = 0,
   scrolling = false,
-  sections = ["#home"];
+  sections = ["#home", "#project1"];
 
 function mouseTrack() {
   if (mousetracking) {
@@ -17,39 +17,39 @@ function mouseTrack() {
   }
 }
 
-$(document).on("touchstart touchmove", function (e) {
+$(document).on("touchstart touchmove", function(e) {
   mousetracking = false;
 });
 $("body")
-  .on("touchstart", function (e) {
+  .on("touchstart", function(e) {
     mousetracking = false;
     (mouseThen = e.originalEvent.touches[0].clientX),
-    (mouseYThen = e.originalEvent.touches[0].clientY);
+      (mouseYThen = e.originalEvent.touches[0].clientY);
   })
-  .on("mousedown", function (e) {
+  .on("mousedown", function(e) {
     mouseThen = e.clientX;
     mouseYThen = e.clientY;
   })
-  .on("touchmove", function (e) {
+  .on("touchmove", function(e) {
     mousetracking = false;
     if (swiping) {
       mouseX = e.originalEvent.touches[0].clientX;
       mouseY = e.originalEvent.touches[0].clientY;
     }
   })
-  .on("mousemove", function (e) {
+  .on("mousemove", function(e) {
     mousetracking = true;
     mouseX = e.clientX;
     mouseY = e.clientY;
   });
 
 $("body")
-  .on("mousedown touchstart", function (e) {
+  .on("mousedown touchstart", function(e) {
     e.preventDefault();
     menuCDSwitch = true;
     swiping = true;
   })
-  .on("mousemove touchmove", function (e) {
+  .on("mousemove touchmove", function(e) {
     e.preventDefault();
     if (swiping && !transitioning) {
       distanceRaw = mouseThen - mouseX;
@@ -74,23 +74,24 @@ $("body")
   });
 
 function animText() {
-  $(".hover > span").html(function (index, html) {
+  $(".hover > span").html(function(index, html) {
     return html.replace(
       /(^|<\/?[^>]+>|\s+)([^\s<]+)/g,
       '$1<span class="word">$2</span>'
     );
   });
-  $(".hover .word").html(function (index, html) {
+  $(".hover .word").html(function(index, html) {
     return html.replace(/\S/g, '<span class="letter">$&</span>');
   });
 }
 animText();
-$("a.hover").each(function (i, el) {
+$("a.hover").each(function(i, el) {
   $(el)
-    .on("mouseenter", function () {
+    .on("mouseenter", function() {
       TweenMax.staggerTo(
         $(el).find("span span"),
-        0.2, {
+        0.2,
+        {
           x: 5,
           y: 5,
           autoAlpha: 0
@@ -99,7 +100,8 @@ $("a.hover").each(function (i, el) {
       );
       TweenMax.staggerTo(
         $(el).find("span span"),
-        0, {
+        0,
+        {
           x: -5,
           y: -5,
           autoAlpha: 0,
@@ -109,7 +111,8 @@ $("a.hover").each(function (i, el) {
       );
       TweenMax.staggerTo(
         $(el).find("span span"),
-        0.2, {
+        0.2,
+        {
           x: 0,
           y: 0,
           autoAlpha: 1,
@@ -124,7 +127,7 @@ $("a.hover").each(function (i, el) {
         autoAlpha: 0
       });
     })
-    .on("mouseleave", function () {
+    .on("mouseleave", function() {
       TweenMax.to(".mouse-track .outer-circle", 0.5, {
         height: 18,
         width: 18,
@@ -134,25 +137,35 @@ $("a.hover").each(function (i, el) {
     });
 });
 
-function previousLoad(){
-  console.log("lol2")
+function previousLoad() {
+  console.log("lol2");
 }
 
-function load(section) {
-  setTimeout(function () {
+function load(section, previousSection) {
+  setTimeout(function() {
     $(".counter .page").html(page + 1);
     $(".counter .divider").html("/");
     $(".counter .total").html(5);
-    if (section !== undefined) $(section).css("display", "flex");
+    if (section !== undefined) {
+      $(section).css("display", "flex");
+      $(section).css("animation", "show 1s");
+    }
     setTimeout(() => {
-      scrolling = false
+      scrolling = false;
     }, 2000);
   }, 1000);
+  if (previousSection !== undefined) {
+    $(previousSection).css("animation", "change 1s");
+    setTimeout(() => {
+      $(previousSection).css("display", "none");
+    }, 1000);
+  }
   sideText();
 
   TweenMax.staggerTo(
     ".menu-top a",
-    0.5, {
+    0.5,
+    {
       autoAlpha: 1,
       y: 0,
       delay: 1
@@ -193,7 +206,8 @@ function sideText() {
   });
   TweenMax.staggerTo(
     ".counter span",
-    0.5, {
+    0.5,
+    {
       ease: Elastic.easeOut.config(1, 1),
       marginBottom: 0,
       delay: 1
@@ -203,45 +217,26 @@ function sideText() {
 }
 window.addEventListener(
   "mousewheel",
-  function (event) {
+  function(event) {
     event.preventDefault();
     if (!scrolling) {
-      scrolling = true
+      scrolling = true;
       TweenMax.set(window, {
         page: "+= 1",
         delay: 0,
-        onComplete: function () {
-          load(sections[page + 1]);
+        onComplete: function() {
+          load(sections[page], sections[page - 1]);
         }
       });
-      if (event.deltaY == 1) {
-        previousLoad();
-        if (page > 0) {
-          TweenMax.set(window, {
-            page: "-= 1",
-            delay: 1,
-            onComplete: function () {
-              load();
-            }
-          });
-        } else {
-          TweenMax.set(window, {
-            page: 5 - 1,
-            delay: 1,
-            onComplete: function () {
-              load();
-            }
-          });
-        }
-      }
     }
-  }, {
+  },
+  {
     passive: false
   }
 );
 
 $(".topbar__logo")
-  .on("mouseenter", function () {
+  .on("mouseenter", function() {
     TweenMax.to(".mouse-track .outer-circle", 0.5, {
       height: 80,
       width: 80,
@@ -249,7 +244,7 @@ $(".topbar__logo")
       autoAlpha: 0
     });
   })
-  .on("mouseleave", function () {
+  .on("mouseleave", function() {
     TweenMax.to(".mouse-track .outer-circle", 0.5, {
       height: 18,
       width: 18,
