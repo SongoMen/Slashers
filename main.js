@@ -137,27 +137,41 @@ $("a.hover").each(function(i, el) {
     });
 });
 
-function previousLoad() {
-  console.log("lol2");
-}
-
-function load(section, previousSection) {
+function load(section, previousSection, direction) {
   setTimeout(function() {
     $(".counter .page").html(page + 1);
     $(".counter .divider").html("/");
     $(".counter .total").html(5);
-    if (section !== undefined) {
+    if (section !== undefined && direction === undefined) {
       $(section).css("display", "flex");
       $(section).css("animation", "show 1s");
+      setTimeout(() => {
+        $(section).css("animation", "none");
+      }, 1000);
     }
     setTimeout(() => {
       scrolling = false;
     }, 2000);
   }, 1000);
-  if (previousSection !== undefined) {
+  if (previousSection !== undefined && direction === undefined) {
     $(previousSection).css("animation", "change 1s");
     setTimeout(() => {
       $(previousSection).css("display", "none");
+      $(previousSection).css("animation", "none");
+    }, 1000);
+  }
+  if (direction !== undefined) {
+    $(previousSection).css("animation", "backwardsChange 1s");
+    setTimeout(() => {
+      $(previousSection).css("display", "none");
+      $(previousSection).css("animation", "none");
+    }, 1000);
+    setTimeout(() => {
+      $(section).css("display", "flex");
+      $(section).css("animation", "backwardsShow 1s");
+      setTimeout(() => {
+        $(section).css("animation", "none");
+      }, 1000);
     }, 1000);
   }
   sideText();
@@ -220,14 +234,27 @@ window.addEventListener(
   function(event) {
     event.preventDefault();
     if (!scrolling) {
-      scrolling = true;
-      TweenMax.set(window, {
-        page: "+= 1",
-        delay: 0,
-        onComplete: function() {
-          load(sections[page], sections[page - 1]);
-        }
-      });
+      if (event.deltaY > -1 && page <= 5) {
+        scrolling = true;
+        TweenMax.set(window, {
+          page: "+= 1",
+          delay: 0,
+          onComplete: function() {
+            load(sections[page], sections[page - 1]);
+          }
+        });
+      } else if (event.deltaY < 1 && page >= 1) {
+        scrolling = true;
+        TweenMax.set(window, {
+          page: "-= 1",
+          delay: 0,
+          onComplete: function() {
+            console.log(sections[page], " ", sections[page + 1]);
+
+            load(sections[page], sections[page + 1], 1);
+          }
+        });
+      }
     }
   },
   {
