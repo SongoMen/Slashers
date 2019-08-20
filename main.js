@@ -138,6 +138,7 @@ $("a.hover").each(function(i, el) {
 });
 
 function load(section, previousSection, direction) {
+  scrolling = true;
   setTimeout(function() {
     $(".counter .page").html(page + 1);
     $(".counter .divider").html("/");
@@ -151,21 +152,21 @@ function load(section, previousSection, direction) {
     }
     setTimeout(() => {
       scrolling = false;
-    }, 2000);
+    }, 1500);
   }, 1000);
   if (previousSection !== undefined && direction === undefined) {
     $(previousSection).css("animation", "change 1s");
     setTimeout(() => {
       $(previousSection).css("display", "none");
       $(previousSection).css("animation", "none");
-    }, 1000);
+    }, 900);
   }
   if (direction !== undefined) {
     $(previousSection).css("animation", "backwardsChange 1s");
     setTimeout(() => {
       $(previousSection).css("display", "none");
       $(previousSection).css("animation", "none");
-    }, 1000);
+    }, 900);
     setTimeout(() => {
       $(section).css("display", "flex");
       $(section).css("animation", "backwardsShow 1s");
