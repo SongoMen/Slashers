@@ -145,34 +145,42 @@ function load(section, previousSection, direction) {
     $(".counter .total").html(5);
     if (section !== undefined && direction === undefined) {
       $(section).css("display", "flex");
-      $(section).css("animation", "show 1s");
+      $(section + " .info").css("animation", "show .8s");
+      $(section + " .presentation").css("animation", "showPresentation .8s");
       setTimeout(() => {
         $(section).css("animation", "none");
-      }, 1000);
+        $(previousSection + " .presentation").css("animation", "none");
+      }, 800);
     }
     setTimeout(() => {
       scrolling = false;
-    }, 1500);
+    }, 800);
   }, 1000);
   if (previousSection !== undefined && direction === undefined) {
-    $(previousSection).css("animation", "change 1s");
+    $(previousSection + " .info").css("animation", "change .8s");
+    $(previousSection + " .presentation").css("animation", "hidePresentation .8s");
     setTimeout(() => {
       $(previousSection).css("display", "none");
       $(previousSection).css("animation", "none");
-    }, 900);
+      $(previousSection + " .presentation").css("animation", "none");
+    }, 800);
   }
   if (direction !== undefined) {
-    $(previousSection).css("animation", "backwardsChange 1s");
+    $(previousSection + ' .info').css("animation", "backwardsChange .8s");
+    $(previousSection + " .presentation").css("animation", "hidePresentation .8s");
     setTimeout(() => {
       $(previousSection).css("display", "none");
       $(previousSection).css("animation", "none");
-    }, 900);
+      $(previousSection + " .presentation").css("animation", "none");
+    }, 800);
     setTimeout(() => {
       $(section).css("display", "flex");
-      $(section).css("animation", "backwardsShow 1s");
+      $(section + " .info").css("animation", "backwardsShow .8s");
+      $(section + " .presentation").css("animation", "showPresentation .8s");
       setTimeout(() => {
+        $(section + " .presentation").css("animation", "none");
         $(section).css("animation", "none");
-      }, 1000);
+      }, 800);
     }, 1000);
   }
   sideText();
