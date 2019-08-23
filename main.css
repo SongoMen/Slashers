@@ -42,7 +42,7 @@
 
 @keyframes hidePresentation{
   0%{
-    opacity: .2;
+    opacity: .3;
   }
   100%{
     opacity: 0;
@@ -54,7 +54,7 @@
     opacity: 0;
   }
   100%{
-    opacity: .2;
+    opacity: .3;
   }
 }
 
@@ -154,9 +154,13 @@ h4,h5{
   content: "Trader24";
 }
 
+.socialme.heading--halftone:after{
+  content: "SocialMe";
+}
+
 body {
   background-color: #212322;
-  color: #aebebf !important;
+  color: #969292 !important;
   font-family: "Gotham Bold";
   margin: 0;
   position: relative;
@@ -235,7 +239,7 @@ a span:hover {
   margin-right: 10px
 }
 .topbar__logo svg g path{
-  fill: #aebebf
+  fill: #969292
 }
 
 .gradient {
@@ -345,7 +349,7 @@ a span:hover {
   height: 90%;
 }
 
-#project1{
+#project1, #project2{
   display: none;
   justify-content: space-between;
   height: 90%;
@@ -356,6 +360,6 @@ a span:hover {
   height: auto;
   position: relative;
   border-radius: 5px;
-  opacity: .2;
+  opacity: .3;
   transition: all 0s;
 }

@@ -3,7 +3,7 @@ var mousetracking,
   transitioning,
   page = 0,
   scrolling = false,
-  sections = ["#home", "#project1"];
+  sections = ["#home", "#project1", "#project2"];
 
 function mouseTrack() {
   if (mousetracking) {
