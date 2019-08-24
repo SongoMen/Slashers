@@ -181,7 +181,7 @@ body {
 
 a span {
   cursor: none;
-  font-size: 14px;
+  font-size: 12px;
   display: inline-block;
   transition: color 200ms cubic-bezier(0.47, 0, 0.745, 0.715)
 }
@@ -349,11 +349,28 @@ a span:hover {
   height: 90%;
 }
 
+#home .info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column
+}
+
+.info:after{
+  display: inline-block;
+  content: "";
+  height: 10px;
+  width: 200px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAFElEQVQImWP4HxH4nwEv+B8R+B8AZ58FT4ASKKMAAAAASUVORK5CYII=") repeat;
+}
+
 #project1, #project2{
   display: none;
   justify-content: space-between;
   height: 90%;
   align-items: center;
+  position: relative;
 }
 .presentation{
   width: 60%;
@@ -365,5 +382,29 @@ a span:hover {
 }
 
 .presentation.socialme{
-  padding: 70px
+  width: 50%
+}
+
+.explore{
+  position: absolute;
+  bottom: 0;
+}
+
+.explore a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #969292;
+  fill: #969292;
+}
+
+.explore svg{
+  width: 20px;
+  margin-right: 10px;
+  transition: fill 650ms cubic-bezier(0.47, 0, 0.745, 0.715)
+}
+
+.hover:hover{
+  color: #ff5851!important;
+  fill: #ff5851!important;
 }

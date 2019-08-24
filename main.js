@@ -163,7 +163,7 @@ function load(section, previousSection, direction) {
       $(previousSection).css("display", "none");
       $(previousSection).css("animation", "none");
       $(previousSection + " .presentation").css("animation", "none");
-    }, 800);
+    }, 700);
   }
   if (direction !== undefined) {
     $(previousSection + ' .info').css("animation", "backwardsChange .8s");
@@ -172,7 +172,7 @@ function load(section, previousSection, direction) {
       $(previousSection).css("display", "none");
       $(previousSection).css("animation", "none");
       $(previousSection + " .presentation").css("animation", "none");
-    }, 800);
+    },700);
     setTimeout(() => {
       $(section).css("display", "flex");
       $(section + " .info").css("animation", "backwardsShow .8s");
