@@ -3,7 +3,7 @@ var mousetracking,
   transitioning,
   page = 0,
   scrolling = false,
-  sections = ["#home", "#project1", "#project2"];
+  sections = ["#home","#services" ,"#project1", "#project2","#contact"];
 
 function mouseTrack() {
   if (mousetracking) {
@@ -243,7 +243,7 @@ window.addEventListener(
   function(event) {
     event.preventDefault();
     if (!scrolling) {
-      if (event.deltaY > -1 && page <= 5) {
+      if (event.deltaY > -1 && page < 4) {
         scrolling = true;
         TweenMax.set(window, {
           page: "+= 1",

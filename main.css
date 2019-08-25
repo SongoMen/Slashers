@@ -157,6 +157,13 @@ h4,h5{
 .socialme.heading--halftone:after{
   content: "SocialMe";
 }
+.services.heading--halftone:after{
+  content: "Services";
+}
+
+.contact.heading--halftone:after{
+  content: "Contact";
+}
 
 body {
   background-color: #212322;
@@ -349,7 +356,7 @@ a span:hover {
   height: 90%;
 }
 
-#home .info{
+#home .info, #services .info,#contact .info{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -365,7 +372,7 @@ a span:hover {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAFElEQVQImWP4HxH4nwEv+B8R+B8AZ58FT4ASKKMAAAAASUVORK5CYII=") repeat;
 }
 
-#project1, #project2{
+#project1,#services,#contact, #project2{
   display: none;
   justify-content: space-between;
   height: 90%;
@@ -407,4 +414,10 @@ a span:hover {
 .hover:hover{
   color: #ff5851!important;
   fill: #ff5851!important;
+}
+
+#services,#contact{
+  display: none;
+  justify-content: center;
+  flex-direction: column;
 }
