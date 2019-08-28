@@ -258,8 +258,6 @@ window.addEventListener(
           page: "-= 1",
           delay: 0,
           onComplete: function() {
-            console.log(sections[page], " ", sections[page + 1]);
-
             load(sections[page], sections[page + 1], 1);
           }
         });
@@ -271,7 +269,7 @@ window.addEventListener(
   }
 );
 
-$(".topbar__logo")
+$(".topbar__logo,.hide")
   .on("mouseenter", function() {
     TweenMax.to(".mouse-track .outer-circle", 0.5, {
       height: 80,
