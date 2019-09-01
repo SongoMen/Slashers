@@ -513,7 +513,7 @@ a span:hover {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAFElEQVQImWP4HxH4nwEv+B8R+B8AZ58FT4ASKKMAAAAASUVORK5CYII=") repeat;
 }
 
-#services .info:after {
+#services .info:after,#contact .info:after {
   display: none
 }
 
@@ -649,6 +649,22 @@ a span:hover {
           box-shadow: 0px 0px 0px 15px rgba(255, 88, 81, .1);
 }
 
+.mailto{
+  border: 2px solid #212322;
+  padding: 25px 40px;
+  margin-top:60px;
+  text-decoration: none;
+  color: #ff5851;
+  transition: all .5s;
+  font-size: 25px;
+}
+
+.mailto:hover {
+  border: 2px solid #ff5851;
+  -webkit-box-shadow: 0px 0px 0px 15px rgba(255, 88, 81, .1);
+          box-shadow: 0px 0px 0px 15px rgba(255, 88, 81, .1);
+}
+
 @media only screen and (max-width: 1150px) {
   .layout {
     padding: 20px 30px;
@@ -685,7 +701,6 @@ a span:hover {
     display: none
   }
 }
-
 @media only screen and (max-width: 750px) {
   .box {
     padding: 15px
